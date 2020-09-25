@@ -13,7 +13,6 @@ const homeSchema = new Schema(
       {
         type: {
           type: String, 
-          trim: true,
           required: "Please let us know what room this is!",
         },
         projects: {
@@ -21,21 +20,18 @@ const homeSchema = new Schema(
             type: String
           },
           cost: Number,
-          trim: true
         },
         maintenence: {
           name: {
             type: String
           },
           cost: Number,
-          trim: true
         },
         issues: {
           name: {
             type: String
           },
           cost: Number,
-          trim: true
         },
       },
     ],
