@@ -1,19 +1,19 @@
 const path = require("path");
 const router = require("express").Router();
-const homeController = require("../controllers/homeController");
-const userController = require("../controllers/userController");
+const apiRoutes = require("./api");
+const authController = require("../controllers/authController");
 
-router.use("/api/user")
-  .get(userController.findAll)
-  .post(userController.create)
-  .put(userController.update)
-  .delete(userController.remove);
+// API Routes
+router.use("/api", apiRoutes);
 
-router.use("/api/home")
-  .get(homeController.findAll)
-  .post(homeController.create)
-  .put(homeController.update)
-  .delete(homeController.remove);
+// Auth Routes
+router.route("/login")
+  .get(authController.loginGet)
+  .post(authController.loginPost);
+
+router.route("/signup")
+  .get(authController.signupGet)
+  .post(authController.signupPost);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
@@ -21,3 +21,4 @@ router.use(function(req, res) {
 });
 
 module.exports = router;
+
