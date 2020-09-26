@@ -27,10 +27,12 @@ const createToken = (id) => {
 };
 
 module.exports = {
+    // GET on /signup
     signupGet: function(req, res)  {
         res.render('signup');
     },
 
+    //POST on /signup
     signupPost: async function(req, res)  {
         const { name, email, password } = req.body;
       
@@ -47,16 +49,30 @@ module.exports = {
        
     },
 
+    // GET on /login
     loginGet: function(req, res)  {
         res.render('login');
     },
-
     
-
+    // POST on /login
     loginPost: async function(req, res)  {
         const { email, password } = req.body;
       
-        console.log(email, password);
-        res.send('user login');
+        try {
+            const user = await User.login(email, password);
+            const token = createToken(user._id);
+            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+            res.status(200).json({ user: user._id });
+        } 
+          catch (err) {
+            const errors = handleErrors(err);
+            res.status(400).json({ errors });
+        }
+    },
+    
+    // GET on /logout
+    logoutGet: function (req, res) {
+        res.cookie('jwt',  '', { maxAge: 1 });
+        res.redirect('/');
     }
 }
