@@ -3,6 +3,7 @@ import { Avatar, Button, Link, Grid, Box, CssBaseline, TextField, Checkbox, Form
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright';
+import Facebook from '../../src/components/Facebook/Facebook';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -100,6 +101,7 @@ export default function Login() {
             </Grid>
           </Grid>
         </form>
+        <Facebook />
       </div>
       <Box mt={8}>
         <Copyright />

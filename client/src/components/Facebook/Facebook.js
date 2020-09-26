@@ -1,4 +1,3 @@
-import { response } from 'express';
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
@@ -23,15 +22,16 @@ export default class Facebook extends Component {
         });
     }
     
-    componentClicked = () => console.log('clicked');
+    componentClicked = (e) => {
+        e.preventDefault();
+        console.log('clicked');
+    }
 
     render() {
         let fbContent;
 
         if(this.state.isLoggedIn) {
-            fbContent = (
-                <div></div>
-            );
+            fbContent = null;
         } else {
             fbContent = (
                 <FacebookLogin

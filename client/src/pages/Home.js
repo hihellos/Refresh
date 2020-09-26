@@ -42,6 +42,10 @@ export default function TitlebarGridList() {
   const classes = useStyles();
 
   return (
+    //navbar - transparent with button in the middle, button to the left that goes to the calculator
+
+    //square grid
+    //each square is a room box component
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
@@ -63,5 +67,7 @@ export default function TitlebarGridList() {
         ))}
       </GridList>
     </div>
+
+    //footer
   );
 }
