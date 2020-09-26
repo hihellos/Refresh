@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright';
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,18 +25,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const handleInputChange = e => {
-  const name = e.target.name;
-  const value = e.target.value;
-  console.log('user input', name, value);
-}
-
-const handleFormSubmit = e => {
-  e.preventDefault();
-  console.log('user submit');
-}
-
 export default function SignUp() {
+  const [user, setUser] = useState(
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    }
+  )
+
+  const handleInputChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('user input', name, value);
+    setUser({...user, [name]: value});
+    console.log('user is', user);
+  }
+  
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    console.log('user submitted');
+    if (user.email && user.password && user.firstName && user.lastName) {
+      const userFullname = `${user.firstName} ${user.lastName}`;
+      API.saveUser({
+        name: userFullname,
+        email: user.email,
+        password: user.password
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    }
+  }
+
   const classes = useStyles();
 
   return (
