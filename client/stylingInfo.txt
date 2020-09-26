@@ -1,0 +1,5 @@
+gray - #CCCCCC
+green - #61c80e
+tangerine - #ffb000
+salmon - #ff6f5b
+
