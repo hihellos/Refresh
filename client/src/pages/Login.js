@@ -4,6 +4,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright';
 import Facebook from '../../src/components/Facebook/Facebook';
+import NavBar from '../components/Nav'
 import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +60,8 @@ export default function Login() {
 
   return (
     <Container component="main" maxWidth="xs">
+          <NavBar/>
+
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
