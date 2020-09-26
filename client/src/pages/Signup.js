@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright';
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,6 +26,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [user, setUser] = useState(
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    }
+  )
+
+  const handleInputChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('user input', name, value);
+    setUser({...user, [name]: value});
+    console.log('user is', user);
+  }
+  
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    console.log('user submitted');
+    if (user.email && user.password && user.firstName && user.lastName) {
+      const userFullname = `${user.firstName} ${user.lastName}`;
+      API.saveUser({
+        name: userFullname,
+        email: user.email,
+        password: user.password
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    }
+  }
+
   const classes = useStyles();
 
   return (
@@ -49,6 +82,7 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -60,6 +94,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -71,6 +106,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -83,6 +119,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -98,6 +135,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
             Sign Up
           </Button>
