@@ -24,6 +24,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const handleInputChange = e => {
+  const name = e.target.name;
+  const value = e.target.value;
+  console.log('user input', name, value);
+}
+
+const handleFormSubmit = e => {
+  e.preventDefault();
+  console.log('user submit');
+}
+
 export default function SignUp() {
   const classes = useStyles();
 
@@ -49,6 +60,7 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -60,6 +72,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -71,6 +84,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -83,6 +97,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -98,6 +113,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
             Sign Up
           </Button>

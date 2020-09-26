@@ -24,6 +24,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const handleInputChange = e => {
+  const name = e.target.name;
+  const value = e.target.value;
+  console.log('user input', name, value);
+}
+
+const handleFormSubmit = e => {
+  e.preventDefault();
+  console.log('user submit');
+}
+
 export default function Login() {
   const classes = useStyles();
 
@@ -48,6 +59,7 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -59,6 +71,7 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleInputChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -70,6 +83,7 @@ export default function Login() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
             Sign In
           </Button>
