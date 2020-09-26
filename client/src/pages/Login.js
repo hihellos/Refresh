@@ -67,6 +67,14 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <Facebook 
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        className={classes.submit}
+        onClick={handleFormSubmit}
+        />
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
@@ -119,7 +127,7 @@ export default function Login() {
             </Grid>
           </Grid>
         </form>
-        <Facebook />
+        
       </div>
       <Box mt={8}>
         <Copyright />
