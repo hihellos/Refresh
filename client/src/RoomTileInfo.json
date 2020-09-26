@@ -47,6 +47,6 @@
      {
         "id": 10,
         "room": "Basement/Utility",
-        "img": ""
+        "img": "./assets/images/hvac.jpg"
      }
 ]
