@@ -10,13 +10,13 @@ const theme = createMuiTheme({
       main: '#ff6f5b', //salmon
       contrastText: '#ffffff', //white
     },
-    warning: {
+    error: {
         light: '#ffb74d', //muted tangerine
         main: '#ff9800', //tangerine
         dark: 'f57c00', //dark tangerine
-        contrastText: '#fffff',
+        contrastText: '#fffff', //white
     },
-    info: {
+    initial: {
         main: '#cccccc', //light grey
         contrastText: '#000000', //black
     }
