@@ -58,7 +58,7 @@ module.exports = {
 
     // GET on /login
     loginGet: function(req, res)  {
-        res.render('login');
+        console.log('whenever user uses GET on login', res);
     },
     
     // POST on /login
@@ -78,8 +78,12 @@ module.exports = {
     },
     
     // GET on /logout
-    logoutGet: function (req, res) {
+    logoutGet: async function (req, res) {
+        try {
         res.cookie('jwt',  '', { maxAge: 1 });
-        res.redirect('/');
-    }
+        // console.log('----------------\n',res);
+        }
+        catch (err) {
+            res.json(err);
+    }   }
 }

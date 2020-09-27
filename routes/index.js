@@ -2,10 +2,11 @@ const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
 const authController = require("../controllers/authController");
-const { checkUser } = require("../middleware/authMiddleware");
+const { checkUser, requireAuth } = require("../middleware/authMiddleware");
 
 // Main Routes
 router.get("*", checkUser);
+router.get("/home", requireAuth, (req, res) => res.redirect('/home'));
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
