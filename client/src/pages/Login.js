@@ -116,7 +116,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}
               onClick={handleFormSubmit}>
             <Facebook/>
@@ -125,7 +125,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}
               onClick={handleFormSubmit}>
             Login with GitHub
@@ -134,7 +134,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}
               onClick={handleFormSubmit}>
             Login with Google
@@ -151,7 +151,7 @@ export default function Login(props) {
             </Button>
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
-                <Link href="#" variant="body2" >
+                <Link href="/signup" variant="body2" >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
