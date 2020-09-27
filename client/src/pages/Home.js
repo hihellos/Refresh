@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Nav'
-import RoomBox from './components/RoomBox';
+import RoomBox from '..//components/RoomBox';
 import Footer from '../components/Footer/index';
 
 
