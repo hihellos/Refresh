@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Link, Grid, Box, CssBaseline, TextField, Typography, Container} from '@material-ui/core';
+import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Container} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import Copyright from '../components/Copyright';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import StickyFooter from '../components/Footer';
@@ -137,7 +136,7 @@ export default function Login() {
           <Grid container justify="center">
             <Grid item>
               <div className={classes.link}>
-              <Link href="#" variant="body2" >
+              <Link href="#" variant="body2" color="initial">
                 {"Don't have an account? Sign Up"}
               </Link>
               </div>
