@@ -7,5 +7,9 @@ export default {
     
     getUser: function(userdata) {
         return axios.post("/login", userdata)
+    },
+
+    outUser: function() {
+        return axios.get("/logout")
     }
 };

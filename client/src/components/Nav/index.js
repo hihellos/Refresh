@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -71,7 +71,7 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             Refresh
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button onClick={props.logout} color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

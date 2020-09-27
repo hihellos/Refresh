@@ -55,7 +55,7 @@ export default function Login(props) {
     console.log('user is', user);
   }
   
-  const handleFormSubmit = e => {
+  const handleLogInRequest = e => {
     e.preventDefault();
     console.log('user submitted');
     if (user.email && user.password) {
@@ -65,9 +65,9 @@ export default function Login(props) {
       })
       .then(res => {
         if (res.status === 200) {
-          props.history.push("/home");
+          // props.history.push("/home");
         }
-        console.log(res)
+        console.log(res.data)
       })
       .catch(err => console.log(err));
     }
@@ -118,7 +118,7 @@ export default function Login(props) {
               variant="contained"
               color="secondary"
               className={classes.submit}
-              onClick={handleFormSubmit}>
+              onClick={"YourFunctionHere"}>
             <Facebook/>
           </Button>
           <Button
@@ -127,7 +127,7 @@ export default function Login(props) {
               variant="contained"
               color="secondary"
               className={classes.submit}
-              onClick={handleFormSubmit}>
+              onClick={"YourFunctionHere"}>
             Login with GitHub
           </Button>
           <Button
@@ -136,7 +136,7 @@ export default function Login(props) {
               variant="contained"
               color="secondary"
               className={classes.submit}
-              onClick={handleFormSubmit}>
+              onClick={"YourFunctionHere"}>
             Login with Google
           </Button>
             <Button
@@ -145,7 +145,7 @@ export default function Login(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={handleFormSubmit}
+              onClick={handleLogInRequest}
             >
               Sign In
             </Button>
