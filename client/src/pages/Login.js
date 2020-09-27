@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Link, Grid, Box, CssBaseline, TextField, Checkbox, FormControlLabel, Typography, Container} from '@material-ui/core';
+import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Container} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import Copyright from '../components/Copyright';
 import Facebook from '../../src/components/Facebook/Facebook';
-import NavBar from '../components/Nav'
 import API from '../utils/API';
+import StickyFooter from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -23,8 +22,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(1, 0, 1),
   },
+  link: {
+    margin: theme.spacing(1, 0, 1)
+  }
 }));
 
 export default function Login(props) {
@@ -65,8 +67,6 @@ export default function Login(props) {
 
   return (
     <Container component="main" maxWidth="xs">
-          <NavBar/>
-
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -75,14 +75,7 @@ export default function Login(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Facebook 
-        type="submit"
-        fullWidth
-        variant="contained"
-        color="primary"
-        className={classes.submit}
-        onClick={handleFormSubmit}
-        />
+        
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
@@ -108,10 +101,33 @@ export default function Login(props) {
             autoComplete="current-password"
             onChange={handleInputChange}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+            onClick={handleFormSubmit}>
+          <Facebook/>
+        </Button>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+            onClick={handleFormSubmit}>
+          Login with GitHub
+        </Button>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+            onClick={handleFormSubmit}>
+          Login with Google
+        </Button>
           <Button
             type="submit"
             fullWidth
@@ -122,24 +138,18 @@ export default function Login(props) {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+          <Grid container justify="center">
             <Grid item>
-              <Link href="#" variant="body2">
+              <div className={classes.link}>
+              <Link href="#" variant="body2" color="initial">
                 {"Don't have an account? Sign Up"}
               </Link>
+              </div>
             </Grid>
           </Grid>
         </form>
-        
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+      <StickyFooter/>
     </Container>
   );
 }
