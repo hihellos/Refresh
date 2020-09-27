@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
+import { GridList, GridListTile, GridListTileBar, ListSubheader, IconButton } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
-import RoomTileInfo from './RoomTileInfo.json';
+// import RoomTileInfo from './RoomTileInfo.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +39,29 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 export default function RoomBox() {
+  const [room, setRoom] = useState([
+    {
+      "id": 1,
+      "room": "Kitchen",
+      "img": "./assets/images/kitchen1.jpg"
+    },
+    {
+      "id": 2,
+      "room": "Bathroom",
+      "img": "./assets/images/bathroom1.jpg"
+    },
+    {
+      "id": 3,
+      "room": "Bedroom(s)",
+      "img": "./assets/images/bedroom1.jpg"
+    },
+    {
+      "id": 4,
+      "room": "Laundry Room",
+      "img": "./assets/images/laundryroom1.jpg"
+    },
+  ])
+
   const classes = useStyles();
     return(
         // <h3>Room Box grid will render here</h3>
@@ -52,8 +71,8 @@ export default function RoomBox() {
           <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
             <ListSubheader component="div">December</ListSubheader>
           </GridListTile>
-          {RoomTileInfo.map((tile) => (
-            <GridListTile key={tile.img}>
+          {room.map((tile) => (
+            <GridListTile key={tile.id}>
               <img src={tile.img} alt={tile.room} />
               <GridListTileBar
                 title={tile.room}

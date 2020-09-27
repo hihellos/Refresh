@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Login() {
+export default function Login(props) {
   const [user, setUser] = useState(
+<<<<<<< HEAD
         {
           email: "",
           password: ""
@@ -68,6 +69,40 @@ export default function Login() {
         }
       }
       
+=======
+    {
+      email: "",
+      password: ""
+    }
+  )
+
+  const handleInputChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('user input', name, value);
+    setUser({...user, [name]: value});
+    console.log('user is', user);
+  }
+  
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    console.log('user submitted');
+    if (user.email && user.password) {
+      API.getUser({
+        email: user.email,
+        password: user.password
+      })
+      .then(res => {
+        if (res.status === 200) {
+          props.history.push("/home");
+        }
+        console.log(res)
+      })
+      .catch(err => console.log(err));
+    }
+  }
+
+>>>>>>> 70bba584b3c1c7f96dec7275ec22ed65ce718530
   const classes = useStyles();
 
   return (
