@@ -50,9 +50,7 @@ export default function Login(props) {
   const handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log('user input', name, value);
     setUser({...user, [name]: value});
-    console.log('user is', user);
   }
   
   const handleLogInRequest = e => {
@@ -65,9 +63,9 @@ export default function Login(props) {
       })
       .then(res => {
         if (res.status === 200) {
-          // props.history.push("/home");
+          props.history.push("/home");
         }
-        console.log(res.data)
+        console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
     }
@@ -117,8 +115,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="secondary"
-              className={classes.submit}
-              onClick={"YourFunctionHere"}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             <Facebook/>
           </Button>
           <Button
@@ -126,8 +124,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="secondary"
-              className={classes.submit}
-              onClick={"YourFunctionHere"}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             Login with GitHub
           </Button>
           <Button
@@ -135,8 +133,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="secondary"
-              className={classes.submit}
-              onClick={"YourFunctionHere"}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             Login with Google
           </Button>
             <Button

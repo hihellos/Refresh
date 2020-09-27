@@ -11,6 +11,7 @@ export default function Home(props) {
       API.outUser()
       .then(res => {
         console.log(props)
+        console.log(res)
         if (res.status === 200) {
           props.history.push("/");
         }

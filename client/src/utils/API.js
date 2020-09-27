@@ -11,5 +11,7 @@ export default {
 
     outUser: function() {
         return axios.get("/logout")
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 };
