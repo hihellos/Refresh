@@ -36,10 +36,11 @@ export default class Facebook extends Component {
             fbContent = (
                 <FacebookLogin
                 appId="363512615022429"
-                autoLoad={true}
                 fields="name,email,picture"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook}
+                version="2.3"
+                icon="fa-facebook"
               />
             )
         }
