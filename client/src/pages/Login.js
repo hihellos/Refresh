@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const [user, setUser] = useState(
     {
       email: "",
@@ -51,7 +51,12 @@ export default function Login() {
         email: user.email,
         password: user.password
       })
-      .then(res => console.log(res))
+      .then(res => {
+        if (res.status === 200) {
+          props.history.push("/home");
+        }
+        console.log(res)
+      })
       .catch(err => console.log(err));
     }
   }
