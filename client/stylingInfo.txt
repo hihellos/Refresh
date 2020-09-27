@@ -1,0 +1,8 @@
+gray - #CCCCCC
+green - #61c80e
+tangerine - #ffb000
+salmon - #ff6f5b
+
+RoomBox Tile background images:
+width: 300px
+height: auto

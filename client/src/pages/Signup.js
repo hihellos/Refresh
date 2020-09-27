@@ -1,30 +1,9 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import React, { useState } from 'react';
+import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import API from '../utils/API';
+import StickyFooter from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,6 +26,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [user, setUser] = useState(
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    }
+  )
+
+  const handleInputChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('user input', name, value);
+    setUser({...user, [name]: value});
+    console.log('user is', user);
+  }
+  
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    console.log('user submitted');
+    if (user.email && user.password && user.firstName && user.lastName) {
+      const userFullname = `${user.firstName} ${user.lastName}`;
+      API.saveUser({
+        name: userFullname,
+        email: user.email,
+        password: user.password
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    }
+  }
+
   const classes = useStyles();
 
   return (
@@ -71,6 +82,7 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -82,6 +94,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +106,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,12 +119,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                onChange={handleInputChange}
               />
             </Grid>
           </Grid>
@@ -120,6 +129,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
             Sign Up
           </Button>
@@ -132,9 +142,8 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
+      <StickyFooter />
     </Container>
+    
   );
 }

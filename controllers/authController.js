@@ -4,8 +4,15 @@ const jwt = require('jsonwebtoken');
 const handleErrors = (err) => {
     console.log(err.message, err.code);
     let errors = { email: '', password: '' };
-    
-    // needs to add for name error.
+
+    if (err.message === 'incorrect email') {
+        errors.email = 'That email is not registered';
+    }
+
+    if (err.message === 'incorrect password') {
+        errors.password = 'That password is incorrect';
+    }
+
     if (err.code === 11000) {
         errors.email = 'that email is already registered';
         return errors;
@@ -27,10 +34,12 @@ const createToken = (id) => {
 };
 
 module.exports = {
+    // GET on /signup
     signupGet: function(req, res)  {
         res.render('signup');
     },
 
+    //POST on /signup
     signupPost: async function(req, res)  {
         const { name, email, password } = req.body;
       
@@ -47,16 +56,30 @@ module.exports = {
        
     },
 
+    // GET on /login
     loginGet: function(req, res)  {
         res.render('login');
     },
-
     
-
+    // POST on /login
     loginPost: async function(req, res)  {
         const { email, password } = req.body;
       
-        console.log(email, password);
-        res.send('user login');
+        try {
+            const user = await db.User.login(email, password);
+            const token = createToken(user._id);
+            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+            res.status(200).json({ user: user._id });
+        } 
+          catch (err) {
+            const errors = handleErrors(err);
+            res.status(400).json(errors);
+        }
+    },
+    
+    // GET on /logout
+    logoutGet: function (req, res) {
+        res.cookie('jwt',  '', { maxAge: 1 });
+        res.redirect('/');
     }
 }
