@@ -1,4 +1,4 @@
 module.exports = {
-    Home: require("./Home"),
-    User: require("./User")
+    Home: require("./Homes.js"),
+    User: require("./Users.js")
 };
