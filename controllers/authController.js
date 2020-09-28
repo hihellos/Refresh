@@ -42,7 +42,7 @@ module.exports = {
     //POST on /signup
     signupPost: async function(req, res)  {
         const { name, email, password } = req.body;
-      
+        
         try {
           const user = await db.User.create({ name, email, password });
           const token = createToken(user._id);
@@ -81,9 +81,29 @@ module.exports = {
     logoutGet: async function (req, res) {
         try {
         res.cookie('jwt',  '', { maxAge: 1 });
+        res.status(200).json('Logged Out');
         // console.log('----------------\n',res);
         }
         catch (err) {
             res.json(err);
-    }   }
+       }
+    },
+
+    jwtGet: async function (req, res) {
+        try {
+            let token = req.cookies.jwt;
+            if (token) {
+                console.log("token exist")
+                console.log('jwtGet:\n',token);
+                res.json(token);
+            } else {
+                console.log("token does not exist");
+                res.json("No Token");
+            }
+        }
+        catch (err) {
+            res.json(err);
+        }
+    }
+ 
 }
