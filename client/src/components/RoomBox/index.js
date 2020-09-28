@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { GridList, GridListTile, GridListTileBar, ListSubheader, IconButton } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
-// import RoomTileInfo from './RoomTileInfo.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,23 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
 export default function RoomBox() {
   const [room, setRoom] = useState([
     {

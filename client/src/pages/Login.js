@@ -50,12 +50,10 @@ export default function Login(props) {
   const handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log('user input', name, value);
     setUser({...user, [name]: value});
-    console.log('user is', user);
   }
   
-  const handleFormSubmit = e => {
+  const handleLogInRequest = e => {
     e.preventDefault();
     console.log('user submitted');
     if (user.email && user.password) {
@@ -67,7 +65,7 @@ export default function Login(props) {
         if (res.status === 200) {
           props.history.push("/home");
         }
-        console.log(res)
+        console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
     }
@@ -117,8 +115,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
-              onClick={handleFormSubmit}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             <Facebook/>
           </Button>
           <Button
@@ -126,8 +124,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
-              onClick={handleFormSubmit}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             Login with GitHub
           </Button>
           <Button
@@ -135,8 +133,8 @@ export default function Login(props) {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
-              onClick={handleFormSubmit}>
+              className={classes.submit}>
+              {/* onClick={"YourFunctionHere"} */}
             Login with Google
           </Button>
             <Button
@@ -145,7 +143,7 @@ export default function Login(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={handleFormSubmit}
+              onClick={handleLogInRequest}
             >
               Sign In
             </Button>

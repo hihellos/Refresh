@@ -1,24 +1,45 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "../components/Nav";
-import Navbar2 from "../components/Nav/RSindex";
-// import RoomBox from '..//components/RoomBox';
-// import Footer from "../components/Footer/index";
-import CardGrid from "../components/CardDeck";
-import { Container, Row, Col } from "../components/Grid";
-import API from "../utils/API";
+import React, { useEffect, useState } from 'react';
+import NavBar from '../components/Nav'
+import RoomBox from '..//components/RoomBox';
+import Footer from '../components/Footer/index';
+import API from '../utils/API';
+import Cookies from 'js-cookie';
 
 export default function Home(props) {
-//setting initial state
-const [cards, setCards] = useState({
-  id: 0,
-  img: "",
-  title: "",
-});
+  //setting initial state
+  const [cards, setCards] = useState({
+    id: 0,
+    img: "",
+    title: "",
+  });
+  const [cookies, setCookies] = useState();
+  const [cookie, setCookie] = useState();
 
-//Load all books and store them with setCards
+  //Load all books and store them with setCards
   useEffect(() => {
-    loadCards()
-  }, [])
+    onLoad();
+    loadCards();
+  },[])
+
+  function onLoad() {
+    API.getJwt()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
+  const handleLogOutRequest = e => {
+    console.log('User trying to log out');
+      API.outUser()
+      .then(res => {
+        console.log(props)
+        console.log(res)
+        if (res.status === 200) {
+          props.history.push("/");
+        }
+        console.log(`Status:${res.status} Successfully Logged Out`)
+      })
+      .catch(err => console.log(err));
+    }
 
   function loadCards() {
     API.getCard()
@@ -29,7 +50,7 @@ const [cards, setCards] = useState({
 
   return (
     <>
-      <NavBar />
+      <NavBar logout={() => handleLogOutRequest()}/>
       <Navbar2 />
       <br></br>
       <Container fluid>

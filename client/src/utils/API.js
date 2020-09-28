@@ -9,6 +9,18 @@ export default {
         return axios.post("/login", userdata)
     },
 
+    outUser: function() {
+        return axios.get("/logout");
+    },
+
+    getJwt: function() {
+        return axios.get("/jwt")
+        .then(res => {
+            console.log(res);
+            return res;
+        })
+        .catch(err => console.log(err));
+    },
     //getCard - gets the card the user selects with given id
     getCard: function(id) {
         return axios.get("/api/roomCard" + id)

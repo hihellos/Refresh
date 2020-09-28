@@ -2,10 +2,11 @@ const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
 const authController = require("../controllers/authController");
-const { checkUser } = require("../middleware/authMiddleware");
+const { checkUser, requireAuth } = require("../middleware/authMiddleware");
 
 // Main Routes
 router.get("*", checkUser);
+router.get("/home", requireAuth, (req, res) => res.redirect('/login'));
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
@@ -23,6 +24,8 @@ router.route("/signup")
   .post(authController.signupPost);
 
 router.get("/logout", authController.logoutGet)
+
+router.get("/jwt", authController.jwtGet)
 
 module.exports = router;
 
