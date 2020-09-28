@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://pixabay.com/images/id-731446/)',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1601041597271-71988152f98b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -114,7 +114,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}>
               {/* onClick={"YourFunctionHere"} */}
             <Facebook/>
@@ -123,7 +123,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}>
               {/* onClick={"YourFunctionHere"} */}
             Login with GitHub
@@ -132,7 +132,7 @@ export default function Login(props) {
               type="submit"
               fullWidth
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.submit}>
               {/* onClick={"YourFunctionHere"} */}
             Login with Google
@@ -149,7 +149,7 @@ export default function Login(props) {
             </Button>
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
-                <Link href="#" variant="body2" >
+                <Link href="/signup" variant="body2" >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

@@ -6,11 +6,19 @@ import API from '../utils/API';
 import Cookies from 'js-cookie';
 
 export default function Home(props) {
+  //setting initial state
+  const [cards, setCards] = useState({
+    id: 0,
+    img: "",
+    title: "",
+  });
   const [cookies, setCookies] = useState();
   const [cookie, setCookie] = useState();
 
+  //Load all books and store them with setCards
   useEffect(() => {
     onLoad();
+    loadCards();
   },[])
 
   function onLoad() {
@@ -31,21 +39,38 @@ export default function Home(props) {
         console.log(`Status:${res.status} Successfully Logged Out`)
       })
       .catch(err => console.log(err));
+    }
+
+  function loadCards() {
+    API.getCard()
+    .then(res =>
+      setCards(res.data))
+      .catch(err => console.log(err));
   }
 
   return (
     <>
-    <h3>NAV BAR WILL RENDER AT TOP<br />
-    <NavBar data={cookies} data2={cookie} logout={() => handleLogOutRequest()}/>
-    GRID FOR ROOMS <br />
-    FOOTER</h3>
-    //navbar - transparent with button in the middle, button to the left that goes to the calculator
-
-    //square grid
-    //each square is a room box component
- 
-    // <RoomBox>Room info</RoomBox>
-    <Footer/>
+      <NavBar logout={() => handleLogOutRequest()}/>
+      <Navbar2 />
+      <br></br>
+      <Container fluid>
+      {cards.length ? (
+              <CardGrid>
+                {cards.map(card => {
+                  return (
+                    <RoomCard key={book._id}>
+                        <Card inverse>
+                          <CardImg width="100%" src={card.image} alt="Room image" />
+                          <CardImgOverlay CardImgOverlay>
+                          </CardImgOverlay>
+                          <Button onClick={() => {}}>{card.title}</Button>
+                        </Card>
+                    </RoomCard>
+                  );
+                })}
+              </CardGrid>)
+              :(<h3>What a gorgeous empty lot!</h3>)}
+      </Container>
     </>
-  )
+  );
 }

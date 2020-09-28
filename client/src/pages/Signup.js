@@ -3,7 +3,6 @@ import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Contain
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import API from '../utils/API';
-import StickyFooter from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -23,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  signUp: {
+    margin: theme.spacing(1, 0, 1),
+  }
 }));
 
 export default function SignUp() {
@@ -133,17 +135,15 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
+          <Grid container justify="center">
+            <Grid item className={classes.signUp}>
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <StickyFooter />
     </Container>
-    
   );
 }
