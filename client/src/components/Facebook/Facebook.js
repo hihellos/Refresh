@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-
-
 export default class Facebook extends Component {
 
     state = {
@@ -26,7 +24,6 @@ export default class Facebook extends Component {
     }
     
     componentClicked = (e) => {
-        e.preventDefault();
         console.log('clicked');
     }
 
@@ -42,9 +39,8 @@ export default class Facebook extends Component {
                 fields="name,email,picture"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook}
-                version="2.3"
                 icon="fa-facebook"
-              />
+                />
             )
         }
 
