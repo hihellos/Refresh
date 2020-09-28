@@ -10,8 +10,15 @@ export default {
     },
 
     outUser: function() {
-        return axios.get("/logout")
-        .then(res => console.log(res))
+        return axios.get("/logout");
+    },
+
+    getJwt: function() {
+        return axios.get("/jwt")
+        .then(res => {
+            console.log(res);
+            return res;
+        })
         .catch(err => console.log(err));
     }
 };
