@@ -150,7 +150,7 @@ export default function Login(props) {
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
                 <Link href="/signup" variant="body2" >
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
