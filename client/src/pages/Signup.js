@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    width: theme.spacing(9),
+    height: theme.spacing(9),
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -79,7 +81,7 @@ export default function SignUp() {
     <Grid item xs={false} sm={4} md={7} className={classes.image}/>
     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar} alt="Refresh Icon" src="./assets/images/logo100x100.png">
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
