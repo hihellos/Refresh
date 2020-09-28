@@ -1,17 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import NavBar from '../components/Nav'
-import RoomBox from '..//components/RoomBox';
-import Footer from '../components/Footer/index';
+// import NavBar from '../components/Nav/Backup'
+//import Footer from '../components/Footer/index';
 import API from '../utils/API';
-import Cookies from 'js-cookie';
+import Navbar2 from '../components/Nav/index';
+import {Container} from '../components/Grid';
+import { Card, Button, CardImg, CardDeck } from 'reactstrap';
+
 
 export default function Home(props) {
   //setting initial state
-  const [cards, setCards] = useState({
+  const [cards, setCards] = useState([{
     id: 0,
-    img: "",
-    title: "",
-  });
+    image: "./assets/images/bathroom1.jpg",
+    title: "TEST ROOM",
+    },
+    {
+      id: 0,
+      image: "./assets/images/bathroom1.jpg",
+      title: "TEST ROOM",
+      },
+      {
+        id: 0,
+        image: "./assets/images/bathroom1.jpg",
+        title: "TEST ROOM",
+        },
+    {
+      id: 0,
+      image: "TEST IMAGE",
+      title: "TEST ROOM",
+      },
+      {
+        id: 0,
+        image: "TEST IMAGE",
+        title: "TEST ROOM",
+        },
+        {
+          id: 0,
+          image: "TEST IMAGE",
+          title: "TEST ROOM",
+          },
+          {
+            id: 0,
+            image: "TEST IMAGE",
+            title: "TEST ROOM",
+            },
+            {
+              id: 0,
+              image: "TEST IMAGE",
+              title: "TEST ROOM",
+              }
+  ]);
   const [cookies, setCookies] = useState();
   const [cookie, setCookie] = useState();
 
@@ -50,25 +88,22 @@ export default function Home(props) {
 
   return (
     <>
-      <NavBar logout={() => handleLogOutRequest()}/>
-      <Navbar2 />
+      <Navbar2 logout={() => handleLogOutRequest()}/>
       <br></br>
       <Container fluid>
       {cards.length ? (
-              <CardGrid>
-                {cards.map(card => {
-                  return (
-                    <RoomCard key={book._id}>
+              <CardDeck>
+                {cards.map(card => (
+                    // <RoomCard key={card.id}>
                         <Card inverse>
-                          <CardImg width="100%" src={card.image} alt="Room image" />
-                          <CardImgOverlay CardImgOverlay>
-                          </CardImgOverlay>
-                          <Button onClick={() => {}}>{card.title}</Button>
+                          <CardImg width="300px" src={card.image} alt="Room image" />
+                          {/* <CardImgOverlay CardImgOverlay>
+                          </CardImgOverlay> */}
+                          <Button href={"google.com"}>{card.title}</Button>
                         </Card>
-                    </RoomCard>
-                  );
-                })}
-              </CardGrid>)
+                    // </RoomCard>
+                ))}
+              </CardDeck>)
               :(<h3>What a gorgeous empty lot!</h3>)}
       </Container>
     </>
