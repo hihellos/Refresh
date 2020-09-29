@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
-import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container } from '@material-ui/core';
+import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Paper } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+  },
+  image: {
+    backgroundImage: 'url(./assets/images/LoginSignup.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
   paper: {
-    marginTop: theme.spacing(8),
+    margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -14,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    width: theme.spacing(9),
+    height: theme.spacing(9),
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -63,10 +76,12 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    <Grid container component="main" className={classes.root}>
+    <CssBaseline />
+    <Grid item xs={false} sm={4} md={7} className={classes.image}/>
+    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar} alt="Refresh Icon" src="./assets/images/logo100x100.png">
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -144,6 +159,7 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-    </Container>
+      </Grid>
+    </Grid>
   );
 }
