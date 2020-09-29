@@ -25,6 +25,13 @@ const userSchema = new Schema(
       ]
     },
 
+    rooms: [
+      { 
+        type: Schema.Types.ObjectId, 
+        ref: "Home"
+      }
+    ],
+
     userCreated: {
       type: Date,
       default: Date.now
