@@ -19,7 +19,7 @@ module.exports = {
   
   create: function(req, res) {
     db.Home.create(req.body)
-      .then(({_id}) => db.User.findOneAndUpdate({}, { $push: { rooms: _id } }, { new: true }))
+      .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
       .then(dbHome => {
         res.json(dbHome);
       })
@@ -40,5 +40,5 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // }
-  
+
 };

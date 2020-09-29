@@ -7,15 +7,24 @@ import Home from './pages/Home';
 import { AppContext } from './utils/AppContext';
 import API from './utils/API';
 import GuardedRoute from './utils/GuardedRoute';
+import { UserContext } from './utils/UserContext';
 
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [userId, setUserId] = useState("");
   // const [isAuthenticating, setIsAuthenticating] = useState(true);
 
-  // useEffect(() => {
-  //   onLoad();
-  // },[])
+  useEffect(() => {
+    onLoad();
+  },[])
+
+  function onLoad() {
+    API.checkUser(userId)
+    .then(res => {
+      console.log(res);
+    })
+  }
 
   // function onLoad() {
   //   API.getJwt()
@@ -29,6 +38,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+    <UserContext.Provider value={{ userId, setUserId }}>
     <Router>
       <Switch>
         <Route exact path={["/","/login"]} component={Login} />
@@ -38,6 +48,7 @@ function App() {
         {/* <GuardedRoute path='/home' component={Home} auth={isAuthenticated} /> */}
       </Switch>
     </Router>
+    </UserContext.Provider>
     </AppContext.Provider>
   );
 }
