@@ -7,8 +7,10 @@ import Navbar from "../components/Nav/index";
 import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
+import { useAppContext } from '../utils/AppContext';
 
 export default function Home(props) {
+  const { userHasAuthenticated } = useAppContext();
   //setting initial state
   const [cards, setCards] = useState([
     {
@@ -52,8 +54,6 @@ export default function Home(props) {
       title: "TEST ROOM",
     },
   ]);
-  // const [cookies, setCookies] = useState();
-  // const [cookie, setCookie] = useState();
 
   //Load all books and store them with setCards
   useEffect(() => {
@@ -63,8 +63,17 @@ export default function Home(props) {
 
   function onLoad() {
     API.getJwt()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    .then(res => {
+      if (res.data === "No Token"){
+      userHasAuthenticated(false);
+        props.history.push("/");
+      }
+      else {
+        userHasAuthenticated(true);
+      }
+    })
+    .catch(err => console.log(err))
+    // setIsAuthenticating(false);
   }
 
   const handleLogOutRequest = (e) => {
