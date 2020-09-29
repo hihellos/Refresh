@@ -4,42 +4,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
-    backgroundImage: 'url(https://images.unsplash.com/photo-1601041597271-71988152f98b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(1, 0, 1),
-  },
-  signUp: {
-    margin: theme.spacing(1, 0, 1),
-  }
-}));
+import { useAppContext } from '../utils/AppContext';
 
 export default function Login(props) {
+  const { userHasAuthenticated } = useAppContext();
   const [user, setUser] = useState(
     {
       email: "",
@@ -56,6 +24,7 @@ export default function Login(props) {
   const handleLogInRequest = e => {
     e.preventDefault();
     console.log('user submitted');
+    userHasAuthenticated(true);
     if (user.email && user.password) {
       API.getUser({
         email: user.email,
@@ -70,6 +39,40 @@ export default function Login(props) {
       .catch(err => console.log(err));
     }
   }
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: 'url(https://images.unsplash.com/photo-1601041597271-71988152f98b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    paper: {
+      margin: theme.spacing(8, 4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(1, 0, 1),
+    },
+    signUp: {
+      margin: theme.spacing(1, 0, 1),
+    }
+  }));
 
   const classes = useStyles();
 

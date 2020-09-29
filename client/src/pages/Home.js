@@ -1,72 +1,36 @@
 import React, { useEffect, useState } from 'react';
-// import NavBar from '../components/Nav/Backup'
-//import Footer from '../components/Footer/index';
+import NavBar from '../components/Nav'
+import RoomBox from '..//components/RoomBox';
+import Footer from '../components/Footer/index';
 import API from '../utils/API';
-import Navbar2 from '../components/Nav/index';
-import {Container} from '../components/Grid';
-import { Card, Button, CardImg, CardDeck } from 'reactstrap';
-
+import { useAppContext } from '../utils/AppContext';
 
 export default function Home(props) {
-  //setting initial state
-  const [cards, setCards] = useState([{
-    id: 0,
-    image: "./assets/images/bathroom1.jpg",
-    title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/bathroom1.jpg",
-      title: "TEST ROOM",
-      },
-      {
-        id: 0,
-        image: "./assets/images/bathroom1.jpg",
-        title: "TEST ROOM",
-        },
-    {
-      id: 0,
-      image: "TEST IMAGE",
-      title: "TEST ROOM",
-      },
-      {
-        id: 0,
-        image: "TEST IMAGE",
-        title: "TEST ROOM",
-        },
-        {
-          id: 0,
-          image: "TEST IMAGE",
-          title: "TEST ROOM",
-          },
-          {
-            id: 0,
-            image: "TEST IMAGE",
-            title: "TEST ROOM",
-            },
-            {
-              id: 0,
-              image: "TEST IMAGE",
-              title: "TEST ROOM",
-              }
-  ]);
-  const [cookies, setCookies] = useState();
-  const [cookie, setCookie] = useState();
-
-  //Load all books and store them with setCards
+  const { userHasAuthenticated } = useAppContext();
+  
   useEffect(() => {
     onLoad();
-    loadCards();
   },[])
 
   function onLoad() {
     API.getJwt()
-    .then(res => console.log(res))
+    .then(res => {
+      if (res.data === "No Token"){
+      userHasAuthenticated(false);
+        props.history.push("/");
+      }
+      else {
+        userHasAuthenticated(true);
+      }
+    })
     .catch(err => console.log(err))
+    // setIsAuthenticating(false);
   }
 
   const handleLogOutRequest = e => {
+    e.preventDefault();
     console.log('User trying to log out');
+    userHasAuthenticated(false);
       API.outUser()
       .then(res => {
         console.log(props)
@@ -77,35 +41,21 @@ export default function Home(props) {
         console.log(`Status:${res.status} Successfully Logged Out`)
       })
       .catch(err => console.log(err));
-    }
-
-  function loadCards() {
-    API.getCard()
-    .then(res =>
-      setCards(res.data))
-      .catch(err => console.log(err));
   }
 
   return (
     <>
-      <Navbar2 logout={() => handleLogOutRequest()}/>
-      <br></br>
-      <Container fluid>
-      {cards.length ? (
-              <CardDeck>
-                {cards.map(card => (
-                    // <RoomCard key={card.id}>
-                        <Card inverse>
-                          <CardImg width="300px" src={card.image} alt="Room image" />
-                          {/* <CardImgOverlay CardImgOverlay>
-                          </CardImgOverlay> */}
-                          <Button href={"google.com"}>{card.title}</Button>
-                        </Card>
-                    // </RoomCard>
-                ))}
-              </CardDeck>)
-              :(<h3>What a gorgeous empty lot!</h3>)}
-      </Container>
+    <h3>NAV BAR WILL RENDER AT TOP<br />
+    <NavBar logout={handleLogOutRequest}/>
+    GRID FOR ROOMS <br />
+    FOOTER</h3>
+    //navbar - transparent with button in the middle, button to the left that goes to the calculator
+
+    //square grid
+    //each square is a room box component
+ 
+    // <RoomBox>Room info</RoomBox>
+    <Footer/>
     </>
-  );
+  )
 }

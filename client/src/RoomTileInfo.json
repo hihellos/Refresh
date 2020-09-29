@@ -2,51 +2,51 @@
     {
        "id": 1,
        "room": "Kitchen",
-       "img": "./assets/images/kitchen1.jpg"
+       "image": "./assets/images/kitchen1.jpg"
     },
     {
         "id": 2,
         "room": "Bathroom",
-        "img": "./assets/images/bathroom1.jpg"
+        "image": "./assets/images/bathroom1.jpg"
      },
      {
         "id": 3,
         "room": "Bedroom(s)",
-        "img": "./assets/images/bedroom1.jpg"
+        "image": "./assets/images/bedroom1.jpg"
      },
      {
         "id": 4,
         "room": "Laundry Room",
-        "img": "./assets/images/laundryroom1.jpg"
+        "image": "./assets/images/laundryroom1.jpg"
      },
      {
         "id": 5,
         "room": "Living Room",
-        "img": "./assets/images/livingroom1.jpg"
+        "image": "./assets/images/livingroom1.jpg"
      },
      {
         "id": 6,
         "room": "Garage",
-        "img": "./assets/images/garage1.jpg"
+        "image": "./assets/images/garage1.jpg"
      },
      {
         "id": 7,
         "room": "Exterior",
-        "img": "./assets/images/exterior1.jpg"
+        "image": "./assets/images/exterior1.jpg"
      },
      {
         "id": 8,
         "room": "Backyard",
-        "img": "./assets/images/yard1.jpg"
+        "image": "./assets/images/yard1.jpg"
      },
      {
         "id": 9,
         "room": "Pool",
-        "img": "./assets/images/pool1.jpg"
+        "image": "./assets/images/pool1.jpg"
      },
      {
         "id": 10,
         "room": "Basement/Utility",
-        "img": "./assets/images/hvac.jpg"
+        "image": "./assets/images/hvac.jpg"
      }
 ]
