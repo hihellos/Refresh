@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
@@ -11,21 +11,21 @@ import GuardedRoute from './utils/GuardedRoute';
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  // const [isAuthenticating, setIsAuthenticating] = useState(true);
 
-  useEffect(() => {
-    onLoad();
-  },[])
+  // useEffect(() => {
+  //   onLoad();
+  // },[])
 
-  function onLoad() {
-    API.getJwt()
-    .then(res => {
-      console.log(res)
-      userHasAuthenticated(true);
-    })
-    .catch(err => console.log(err));
-    setIsAuthenticating(false);
-  }
+  // function onLoad() {
+  //   API.getJwt()
+  //   .then(res => {
+  //     console.log(res)
+  //     userHasAuthenticated(true);
+  //   })
+  //   .catch(err => console.log(err));
+  //   setIsAuthenticating(false);
+  // }
 
   return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>

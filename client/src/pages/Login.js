@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
+import { Redirect } from 'react-router-dom';
 
 export default function Login(props) {
   const { userHasAuthenticated } = useAppContext();
@@ -31,7 +32,9 @@ export default function Login(props) {
       })
       .then(res => {
         if (res.status === 200) {
+          userHasAuthenticated(true)
           props.history.push("/home");
+          // <Redirect to="/home" />
         }
         console.log(`${res.data.user} has logged in`)
       })

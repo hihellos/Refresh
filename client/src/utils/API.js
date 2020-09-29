@@ -21,14 +21,19 @@ export default {
         })
         .catch(err => console.log(err));
     },
-    //getCard - gets the card the user selects with given id
-    getCard: function(id) {
-        return axios.get("/api/roomCard" + id)
+
+    //getCard - gets aa the cards from user
+    getAllRooms: function() {
+        return axios.get("/api/user")
+    },
+
+    postRooms: function(rooms) {
+        return axios.post("/api/home", rooms)
     },
 
     //deleteCard - deletes card from homepage with given id
     deleteCard: function(id) {
-        return axios.delete("/api/roomCard" + id)
+        return axios.delete("/api/home" + id)
     },
 
     //saveUniqueCard - saves a card created by the user - not sure if we want to give the user this choice yet 
