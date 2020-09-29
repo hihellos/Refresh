@@ -8,6 +8,7 @@ import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
+import RoomModal from '../components/Modal'
 
 export default function Home(props) {
   const { userId } = useUserContext();
@@ -114,9 +115,10 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
+              <Button href="" className="roomBtn"><RoomModal/> Room Modal Test</Button>
         </Card>   
         </Wrapper> 
+        
     </>
   );
 }
