@@ -7,6 +7,7 @@ import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
+import RoomModal from '../components/Modal'
 
 export default function Home(props) {
   const { userHasAuthenticated } = useAppContext();
@@ -112,9 +113,10 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
+              <Button href="" className="roomBtn"><RoomModal/> Room Modal Test</Button>
         </Card>   
         </Wrapper> 
+        
     </>
   );
 }
