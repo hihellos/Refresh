@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
 // import {Container} from '../components/Grid';
-import { Card, Button, CardImg, CardImgOverlay, CardTitle, CardText} from "reactstrap";
+import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
 
@@ -93,20 +93,15 @@ export default function Home(props) {
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
-            // <Card inverse key={card.id}>
-            //   <CardImg width="300px" src={card.image} alt="Room image" />
-            //     <CardImgOverlay CardImgOverlay>
-            //           <Button href={"google.com"}>{card.title}</Button>
-            //     </CardImgOverlay>
-            // </Card>
-              <Card body inverse style={{ 
+              <Card body inverse key={card.id}
+              style={{ 
                 backgroundImage: `url(${card.image})`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button className="roomBtn" >Button</Button>
+              <Button href={"google.com"} className="roomBtn">{card.title}</Button>
             </Card>
           ))}
         </Wrapper>
@@ -116,6 +111,7 @@ export default function Home(props) {
           <Button href="/survey">Click me to add rooms!</Button>
         </>
       )}
+      
     </>
   );
 }
