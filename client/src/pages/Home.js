@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-//import Footer from '../components/Footer/index';
+// import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
-import {Container, Row} from '../components/Grid';
+import {Row} from '../components/Grid';
 import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
@@ -98,6 +98,11 @@ export default function Home(props) {
   return (
     <>
       <Navbar logout={() => handleLogOutRequest()} />
+      <Row>
+        <Col-md>
+           <h3 className="pageBreak">Refresh Your Home</h3>
+        </Col-md>
+      </Row>
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
@@ -112,7 +117,20 @@ export default function Home(props) {
               <Button href={"google.com"} className="roomBtn">{card.title}</Button>
             </Card>
           ))}
-          <Card body inverse 
+        </Wrapper>
+      ) : (
+        <>
+          <h3>What a gorgeous empty lot!</h3>
+          <Button href="/survey">Click me to add rooms!</Button>
+        </>
+      )} 
+      <Row>
+        <Col-md-12>
+        <h3 className="pageBreak">Extras</h3>
+        </Col-md-12>
+      </Row>
+      <Wrapper>
+       <Card body inverse className="lastCard"
               style={{ 
                 backgroundImage: `url(./assets/images/newHome.png)`, 
                 backgroundRepeat: 'no-repeat',
@@ -120,16 +138,19 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn">New floorplan? Retake the survey here</Button>
-            </Card>
-        </Wrapper>
-      ) : (
-        <>
-          <h3>What a gorgeous empty lot!</h3>
-          <Button href="/survey">Click me to add rooms!</Button>
-        </>
-      )}
-      
+              <Button href="/survey" className="roomBtn">New floorplan? Retake the survey here</Button>
+        </Card> 
+        <Card body inverse className="lastCard"
+              style={{ 
+                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }}>
+              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
+              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
+        </Card>   
+        </Wrapper> 
     </>
   );
 }
