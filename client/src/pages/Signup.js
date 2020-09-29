@@ -3,6 +3,7 @@ import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Paper }
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import API from '../utils/API';
+import { PromiseProvider } from 'mongoose';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [user, setUser] = useState(
     {
       firstName: "",
@@ -68,7 +69,14 @@ export default function SignUp() {
         email: user.email,
         password: user.password
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        if (res.statusText === "Created") {
+          props.history.push("/home");
+        } else {
+          props.history.push("/")
+        }
+      })
       .catch(err => console.log(err));
     }
   }
