@@ -98,7 +98,6 @@ export default function Home(props) {
   return (
     <>
       <Navbar logout={() => handleLogOutRequest()} />
-      <Row/>
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
@@ -120,8 +119,8 @@ export default function Home(props) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
-              <CardTitle><br></br><br></br><br></br>New floorplan?<br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn"> Retake the survey here</Button>
+              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
+              <Button href={"google.com"} className="roomBtn">New floorplan? Retake the survey here</Button>
             </Card>
         </Wrapper>
       ) : (
