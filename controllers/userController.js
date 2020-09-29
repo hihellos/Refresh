@@ -3,19 +3,25 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.User
-      .find({})
+      .findOne({ _id: req.params.id })
       // .sort({ date: -1 })
       .populate("rooms")
-      .then(dbUser => res.json(dbUser))
+      .then(dbUser => {
+        // console.log(dbUser.rooms);
+        res.json(dbUser.rooms);
+      })
       .catch(err => res.status(422).json(err));
   },
 
-  // findById: function(req, res) {
-  //   db.User
-  //     .findById(req.params.id)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  findById: function(req, res) {
+    db.User
+      .findById(req.params.id)
+      .then(dbModel => {
+        console.log('is this null',dbModel);
+        res.json(dbModel)
+      })
+      .catch(err => res.status(422).json(err));
+  },
 
   // create: function(req, res) {
   //   db.User
@@ -38,5 +44,5 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // }
-  
+
 };
