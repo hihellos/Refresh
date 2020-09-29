@@ -19,3 +19,9 @@
   .roomBtn {
     margin-bottom: -50;
   }
+
+  .pageBreak {
+    text-align: center;
+    margin: 10px;
+    width: 1000px;
+  }
