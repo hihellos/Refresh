@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import NavBar from '../components/Nav/Backup'
 //import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
@@ -114,6 +113,16 @@ export default function Home(props) {
               <Button href={"google.com"} className="roomBtn">{card.title}</Button>
             </Card>
           ))}
+          <Card body inverse 
+              style={{ 
+                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }}>
+              <CardTitle><br></br><br></br><br></br>New floorplan?<br></br> <br></br></CardTitle>
+              <Button href={"google.com"} className="roomBtn"> Retake the survey here</Button>
+            </Card>
         </Wrapper>
       ) : (
         <>
