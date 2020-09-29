@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
-// import {Container} from '../components/Grid';
+import {Container, Row} from '../components/Grid';
 import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
@@ -90,6 +90,7 @@ export default function Home(props) {
   return (
     <>
       <Navbar logout={() => handleLogOutRequest()} />
+      <Row/>
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
