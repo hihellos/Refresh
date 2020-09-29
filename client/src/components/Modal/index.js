@@ -16,31 +16,31 @@ const RoomModal = (props) => {
     setNestedModal(!nestedModal);
     setCloseAll(false);
   }
-  const toggleAll = () => {
-    setNestedModal(!nestedModal);
-    setCloseAll(true);
-  }
+//   const toggleAll = () => {
+//     setNestedModal(!nestedModal);
+//     setCloseAll(true);
+//   }
 
   return (
     <div>
       <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Room Checklist</ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Add table checklist here
           <br />
-          <Button color="success" onClick={toggleNested}>Show Nested Modal</Button>
+          <Button color="success" onClick={toggleNested}>Add Task</Button>
           <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
-            <ModalHeader>Nested Modal title</ModalHeader>
+            <ModalHeader>New Task</ModalHeader>
             <ModalBody>Stuff and things</ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={toggleNested}>Done</Button>{' '}
-              <Button color="secondary" onClick={toggleAll}>All Done</Button>
+              <Button color="primary" onClick={toggleNested}>Save</Button>{' '}
+              <Button color="secondary" onClick={toggleNested}>Cancel</Button>
             </ModalFooter>
           </Modal>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+          <Button color="primary" onClick={toggle}>Save</Button>{' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
