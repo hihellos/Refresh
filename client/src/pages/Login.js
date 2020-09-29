@@ -121,15 +121,14 @@ export default function Login(props) {
               autoComplete="current-password"
               onChange={handleInputChange}
             />
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}>
-              {/* onClick={"YourFunctionHere"} */}
-            <Facebook/>
-          </Button>
+              onClick={"YourFunctionHere"} */}
+          {/* </Button> */}
           <Button
               type="submit"
               fullWidth
@@ -166,6 +165,9 @@ export default function Login(props) {
               </Grid>
             </Grid>
           </form>
+
+            <Facebook/>
+
         </div>
       </Grid>
     </Grid>

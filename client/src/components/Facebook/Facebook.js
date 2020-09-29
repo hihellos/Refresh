@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
-
-
+// import API from '../../utils/API';
+import "./style.css"
 
 export default class Facebook extends Component {
 
@@ -23,10 +23,12 @@ export default class Facebook extends Component {
             email: response.email,
             picture: response.picture.data.url
         });
+
+        // API call to post name & email to Users
+        // API.saveUser
     }
     
     componentClicked = (e) => {
-        e.preventDefault();
         console.log('clicked');
     }
 
@@ -42,9 +44,10 @@ export default class Facebook extends Component {
                 fields="name,email,picture"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook}
-                version="2.3"
+                cssClass="btnFacebook"
                 icon="fa-facebook"
-              />
+                textButton = "&nbsp;&nbsp;Sign In with Facebook"
+                />
             )
         }
 
