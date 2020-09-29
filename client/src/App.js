@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
 import Home from './pages/Home';
-// import Value from './pages/Value';
+import Value from './pages/Value';
+import Survey from './pages/Survey'
 import { AppContext } from './utils/AppContext';
 import API from './utils/API';
 import GuardedRoute from './utils/GuardedRoute';
@@ -35,7 +36,8 @@ function App() {
         <Route exact path={["/","/login"]} component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/home" component={Home} />
-        {/*  <Route exact path="/value" component={Value} /> */}
+        <Route exact path="/value" component={Value} />
+        <Route exact path="/survey" component={Survey} />
         {/* <GuardedRoute path='/home' component={Home} auth={isAuthenticated} /> */}
       </Switch>
     </Router>

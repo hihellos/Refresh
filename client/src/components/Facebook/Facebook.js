@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+// import API from '../../utils/API';
 import "./style.css"
 
 export default class Facebook extends Component {
@@ -22,6 +23,9 @@ export default class Facebook extends Component {
             email: response.email,
             picture: response.picture.data.url
         });
+
+        // API call to post name & email to Users
+        // API.saveUser
     }
     
     componentClicked = (e) => {
