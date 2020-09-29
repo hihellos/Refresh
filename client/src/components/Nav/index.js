@@ -25,7 +25,7 @@ const NewNav = (props) => {
               <NavLink href="/components/">Value</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Logout</NavLink>
+              <NavLink onClick={props.logout}>Logout</NavLink>
             </NavItem>
           </Nav>
           {/* //potentially insert logo here - in this location if we don't want it to have any click effects*/}
