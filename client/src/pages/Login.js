@@ -4,42 +4,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
-    backgroundImage: 'url(./assets/images/LoginSignup.jpg)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(1, 0, 1),
-  },
-  signUp: {
-    margin: theme.spacing(1, 0, 1),
-  }
-}));
+import { useAppContext } from '../utils/AppContext';
 
 export default function Login(props) {
+  const { userHasAuthenticated } = useAppContext();
   const [user, setUser] = useState(
     {
       email: "",
@@ -71,6 +39,42 @@ export default function Login(props) {
     }
   }
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: 'url(./assets/images/LoginSignup.jpg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    paper: {
+      margin: theme.spacing(8, 4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+      width: theme.spacing(9),
+      height: theme.spacing(9),
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(1, 0, 1),
+    },
+    signUp: {
+      margin: theme.spacing(1, 0, 1),
+    }
+  }));
+
   const classes = useStyles();
 
   return (
@@ -79,7 +83,7 @@ export default function Login(props) {
       <Grid item xs={false} sm={4} md={7} className={classes.image}/>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          <Avatar alt="Refresh Icon" src="./assets/images/logo100x100.png" className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -149,7 +153,7 @@ export default function Login(props) {
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
                 <Link href="/signup" variant="body2" >
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
