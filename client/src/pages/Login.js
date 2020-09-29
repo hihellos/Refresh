@@ -5,8 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
+import { Redirect } from 'react-router-dom';
+import { useUserContext } from "../utils/UserContext";
 
 export default function Login(props) {
+  const { setUserId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
   const [user, setUser] = useState(
     {
@@ -31,8 +34,12 @@ export default function Login(props) {
       })
       .then(res => {
         if (res.status === 200) {
+          userHasAuthenticated(true);
+          setUserId(res.data.user);
           props.history.push("/home");
+          // <Redirect to="/home" />
         }
+        console.log(res.data);
         console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));

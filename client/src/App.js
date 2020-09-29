@@ -1,5 +1,4 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
@@ -9,28 +8,38 @@ import Survey from './pages/Survey'
 import { AppContext } from './utils/AppContext';
 import API from './utils/API';
 import GuardedRoute from './utils/GuardedRoute';
+import { UserContext } from './utils/UserContext';
 
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [userId, setUserId] = useState("");
+  // const [isAuthenticating, setIsAuthenticating] = useState(true);
 
   useEffect(() => {
     onLoad();
   },[])
 
   function onLoad() {
-    API.getJwt()
+    API.checkUser(userId)
     .then(res => {
-      console.log(res)
-      userHasAuthenticated(true);
+      console.log(res);
     })
-    .catch(err => console.log(err));
-    setIsAuthenticating(false);
   }
+
+  // function onLoad() {
+  //   API.getJwt()
+  //   .then(res => {
+  //     console.log(res)
+  //     userHasAuthenticated(true);
+  //   })
+  //   .catch(err => console.log(err));
+  //   setIsAuthenticating(false);
+  // }
 
   return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+    <UserContext.Provider value={{ userId, setUserId }}>
     <Router>
       <Switch>
         <Route exact path={["/","/login"]} component={Login} />
@@ -41,6 +50,7 @@ function App() {
         {/* <GuardedRoute path='/home' component={Home} auth={isAuthenticated} /> */}
       </Switch>
     </Router>
+    </UserContext.Provider>
     </AppContext.Provider>
   );
 }

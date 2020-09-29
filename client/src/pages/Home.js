@@ -7,73 +7,46 @@ import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
+import { useUserContext } from "../utils/UserContext";
+import RoomModal from '../components/Modal'
 
 export default function Home(props) {
+  const { userId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
-  //setting initial state
-  const [cards, setCards] = useState([
-    {
-      id: 0,
-      image: "./assets/images/bathroom1.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/kitchen1.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/garage2.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/bedroom1.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/hvac.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/pool1.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/yard1.jpg",
-      title: "TEST ROOM",
-    },
-    {
-      id: 0,
-      image: "./assets/images/laundryroom1.jpg",
-      title: "TEST ROOM",
-    },
-  ]);
-
+  const [cards, setCards] = useState([]);
+  
   //Load all books and store them with setCards
   useEffect(() => {
     onLoad();
     loadCards();
   }, []);
 
-  function onLoad() {
-    API.getJwt()
-    .then(res => {
-      if (res.data === "No Token"){
-      userHasAuthenticated(false);
-        props.history.push("/");
-      }
-      else {
-        userHasAuthenticated(true);
-      }
-    })
-    .catch(err => console.log(err))
-    // setIsAuthenticating(false);
+  function loadCards() {
+    API.getAllRooms(userId)
+      .then((res) => {
+        console.log(res);
+        setCards(res);
+      })
+      .catch((err) => console.log(err));
   }
+
+  function onLoad() {
+    userHasAuthenticated(true);
+  }
+  // function onLoad() {
+  //   API.getJwt()
+  //   .then(res => {
+  //     if (res.data === "No Token"){
+  //     userHasAuthenticated(false);
+  //       props.history.push("/");
+  //     }
+  //     else {
+  //       userHasAuthenticated(true);
+  //     }
+  //   })
+  //   .catch(err => console.log(err))
+  //   // setIsAuthenticating(false);
+  // }
 
   const handleLogOutRequest = (e) => {
     console.log("User trying to log out");
@@ -89,12 +62,6 @@ export default function Home(props) {
       .catch((err) => console.log(err));
   };
 
-  function loadCards() {
-    API.getCard()
-      .then((res) => setCards(res.data))
-      .catch((err) => console.log(err));
-  }
-
   return (
     <>
       <Navbar logout={() => handleLogOutRequest()} />
@@ -106,7 +73,7 @@ export default function Home(props) {
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
-              <Card body inverse key={card.id}
+              <Card body inverse key={card._id}
               style={{ 
                 backgroundImage: `url(${card.image})`, 
                 backgroundRepeat: 'no-repeat',
@@ -114,7 +81,7 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn">{card.title}</Button>
+              <Button href={"google.com"} className="roomBtn">{card.room}</Button>
             </Card>
           ))}
         </Wrapper>
@@ -148,9 +115,10 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
+              <Button href="" className="roomBtn"><RoomModal/> Room Modal Test</Button>
         </Card>   
         </Wrapper> 
+        
     </>
   );
 }
