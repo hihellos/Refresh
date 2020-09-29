@@ -117,7 +117,6 @@ export default function Home(props) {
               <Button href={"google.com"} className="roomBtn">{card.title}</Button>
             </Card>
           ))}
-         
         </Wrapper>
       ) : (
         <>
@@ -139,7 +138,7 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn">New floorplan? Retake the survey here</Button>
+              <Button href="/survey" className="roomBtn">New floorplan? Retake the survey here</Button>
         </Card> 
         <Card body inverse className="lastCard"
               style={{ 
@@ -149,7 +148,7 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn">Calculate your home value score!</Button>
+              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
         </Card>   
         </Wrapper> 
     </>

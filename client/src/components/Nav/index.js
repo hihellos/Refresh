@@ -28,7 +28,7 @@ const NewNav = (props) => {
               <NavLink href="/components/">Value</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={props.logout}>Logout</NavLink>
+              <NavLink href="/login">Logout</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
