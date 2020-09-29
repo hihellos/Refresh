@@ -7,11 +7,14 @@ import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
+import { useUserContext } from "../utils/UserContext";
+import RoomModal from '../components/Modal'
 
 export default function Home(props) {
+  const { userId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
   const [cards, setCards] = useState([]);
-
+  
   //Load all books and store them with setCards
   useEffect(() => {
     onLoad();
@@ -19,10 +22,10 @@ export default function Home(props) {
   }, []);
 
   function loadCards() {
-    API.getAllRooms()
+    API.getAllRooms(userId)
       .then((res) => {
-        console.log(res.data[0].rooms);
-        setCards(res.data[0].rooms);
+        console.log(res);
+        setCards(res);
       })
       .catch((err) => console.log(err));
   }
@@ -112,9 +115,10 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="/value" className="roomBtn">Calculate your home value score!</Button>
+              <Button href="" className="roomBtn"><RoomModal/> Room Modal Test</Button>
         </Card>   
         </Wrapper> 
+        
     </>
   );
 }

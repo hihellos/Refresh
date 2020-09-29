@@ -1,13 +1,3 @@
-//button that returns user to home screen
-
-//dashboard
-
-//long horizontal graph displaying change over time
-
-//square at top for score
-
-//squares along bottom with whatever stats we can pull from data
-
 import React from 'react';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
@@ -16,7 +6,7 @@ import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
 
-function Value(props) {
+function Survey(props) {
 
     const handleLogOutRequest = (e) => {
         console.log("User trying to log out");
@@ -35,8 +25,14 @@ function Value(props) {
     return(
         <>
         <Navbar logout={() => handleLogOutRequest()} />
+        <Row>
+            <Col-md>
+            Select the rooms in your home floor plan:
+            
+            </Col-md>
+        </Row>
         </>
-    ); 
+    );
 }
 
-export default Value;
+export default Survey;
