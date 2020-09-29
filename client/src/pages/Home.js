@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import NavBar from '../components/Nav/Backup'
 //import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
-// import {Container} from '../components/Grid';
+import {Container, Row} from '../components/Grid';
 import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
@@ -113,6 +112,16 @@ export default function Home(props) {
               <Button href={"google.com"} className="roomBtn">{card.title}</Button>
             </Card>
           ))}
+          <Card body inverse 
+              style={{ 
+                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }}>
+              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
+              <Button href={"google.com"} className="roomBtn">New floorplan? Retake the survey here</Button>
+            </Card>
         </Wrapper>
       ) : (
         <>
