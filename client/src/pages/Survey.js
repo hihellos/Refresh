@@ -37,9 +37,9 @@ function Survey(props) {
       };
 
     function handleChange(event) {
-        // setRoomSelected({value: event.target.value});
-        
-        console.log("event is ", event);
+        const value = event.target.name;
+        console.log(roomSelected);
+        setRoomSelected([...roomSelected, {name: value}]);
     }
 
     // const onCheckboxClicked = (selected) => {
@@ -73,7 +73,7 @@ function Survey(props) {
                                     key={preset._id}
                                     label={preset.roomName}
                                     name={preset.roomName}
-                                    onClick={handleChange()}
+                                    onClick={handleChange}
                                     // active={handleChange()}
                                     // onClick={() => onCheckboxClicked({preset.roomName})} 
                                     // active={setRoomSelected(preset.roomName)} 
@@ -84,7 +84,9 @@ function Survey(props) {
                     <Button 
                     className="" 
                     size="lg" 
-                    block>Take me Home!</Button>
+                    block>Take me Home!
+                    {/* onClick={} */}
+                    </Button>
                 </Form>
             </CardBody>
         </Card>
