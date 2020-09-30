@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Table } from 'reactstrap';
 
 const RoomModal = (props) => {
-  const {
-    buttonLabel,
-    className
-  } = props;
+//   const {
+//     buttonLabel,
+//     className
+//   } = props;
 
   const [modal, setModal] = useState(false);
   const [nestedModal, setNestedModal] = useState(false);
@@ -23,26 +23,53 @@ const RoomModal = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Room Checklist</ModalHeader>
-        <ModalBody>
-          Add table checklist here
-          <br />
-          <Button color="success" onClick={toggleNested}>Add Task</Button>
-          <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
-            <ModalHeader>New Task</ModalHeader>
-            <ModalBody>Stuff and things</ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={toggleNested}>Save</Button>{' '}
-              <Button color="secondary" onClick={toggleNested}>Cancel</Button>
-            </ModalFooter>
-          </Modal>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Save</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
+      <Button color="danger" onClick={toggle}>{props.value.room}</Button>
+      <Modal isOpen={modal} toggle={toggle} >
+            <ModalHeader toggle={toggle}>{props.value.room} Checklist</ModalHeader>
+            <ModalBody>
+                        <Table>
+                        <thead>
+                            <tr>
+                            <th>No.</th>
+                            <th>Task</th>
+                            </tr>
+                        </thead>
+                        {/* <tbody>
+                            {props.value.length ? (
+                                    {props.value.map((task) => (
+                                        <tr>
+                                        <th> </th>
+                                        {task.name.map((listItem) => (
+                                            <td>{listItem.name}</td>))}
+                                        </tr>
+                                    ))}
+                                 ) : (
+                                    <>
+                                    <h3>This room is refreshed!</h3>
+                                    </>
+                                 )} 
+                        </tbody> */}
+                        </Table>
+                <br />
+            <Button color="success" onClick={toggleNested}>Add Task</Button>
+                    <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
+                        <ModalHeader>New Task:</ModalHeader>
+                            <ModalBody>
+                                <FormGroup>
+                                    <Label for="exampleText">Text Area</Label>
+                                    <Input type="textarea" name="text" id="newTask" />
+                                </FormGroup>
+                            </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={toggleNested}>Save</Button>{' '}
+                            <Button color="secondary" onClick={toggleNested}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+            </ModalBody>
+          <ModalFooter>
+                <Button color="primary" onClick={toggle}>Save</Button>{' '}
+                <Button color="secondary" onClick={toggle}>Cancel</Button>
+          </ModalFooter>
       </Modal>
     </div>
   );
