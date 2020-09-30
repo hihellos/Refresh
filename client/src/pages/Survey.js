@@ -26,6 +26,9 @@ function Survey(props) {
         const index = roomSelected.indexOf(selected);
         if (index < 0) {
             roomSelected.push(selected);
+            API.saveRooms({
+                
+            })
         } else {
             roomSelected.splice(index, 1);
         }

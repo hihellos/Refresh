@@ -22,6 +22,11 @@ export default {
         .catch(err => console.log(err));
     },
 
+    //save selected rooms from survey
+    saveRooms: function(roomdata) {
+        return axios.post("/room", roomdata)
+    },
+
     //getCard - gets aa the cards from user
     getAllRooms: function(userId) {
         return axios.get("/api/user/" + userId)
