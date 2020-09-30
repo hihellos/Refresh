@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
 import { Card, Button, CardBody, CardHeader, Form, FormGroup, Label, CustomInput} from "reactstrap";
 import "./Home.css";
 
 function Survey(props) {
+
+    useEffect(() => {
+        API.getSeededRooms()
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err));
+    }, []);
 
     const handleLogOutRequest = (e) => {
         console.log("User trying to log out");
@@ -26,9 +34,9 @@ function Survey(props) {
         const index = roomSelected.indexOf(selected);
         if (index < 0) {
             roomSelected.push(selected);
-            API.saveRooms({
+            // API.saveRooms({
                 
-            })
+            // })
         } else {
             roomSelected.splice(index, 1);
         }

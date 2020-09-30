@@ -3,8 +3,8 @@ const homeController = require("../../controllers/homeController");
 
 // "/api/home"
 router.route("/")
-  // .get(homeController.findAll)
-  // .post(homeController.create)
+  .get(homeController.findSeededRooms)
+  .post(homeController.make)
   // .put(homeController.update)
   // .delete(homeController.remove);
 
@@ -12,3 +12,4 @@ router.route("/:id")
 .post(homeController.create);
 
 module.exports = router;
+
