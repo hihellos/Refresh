@@ -6,13 +6,21 @@ import "./Home.css";
 
 function Survey(props) {
 
+    const [preset, setPreset] = useState([]);
+    const [roomSelected, setRoomSelected] = useState([]);
+
     useEffect(() => {
+        renderRooms();
+    }, []);
+
+    const renderRooms = () => {
         API.getSeededRooms()
         .then(res => {
-            console.log(res);
+            // console.log(res);
+            setPreset(res.data);
         })
         .catch(err => console.log(err));
-    }, []);
+    }
 
     const handleLogOutRequest = (e) => {
         console.log("User trying to log out");
@@ -28,21 +36,25 @@ function Survey(props) {
           .catch((err) => console.log(err));
       };
 
-    const [roomSelected, setRoomSelected] = useState([]);
-
-    const onCheckboxClicked = (selected) => {
-        const index = roomSelected.indexOf(selected);
-        if (index < 0) {
-            roomSelected.push(selected);
-            // API.saveRooms({
-                
-            // })
-        } else {
-            roomSelected.splice(index, 1);
-        }
-        setRoomSelected([...roomSelected]);
-        console.log(roomSelected);
+    function handleChange(event) {
+        // setRoomSelected({value: event.target.value});
+        
+        console.log("event is ", event);
     }
+
+    // const onCheckboxClicked = (selected) => {
+    //     const index = roomSelected.indexOf(selected);
+    //     if (index < 0) {
+    //         roomSelected.push(selected);
+    //         // API.saveRooms({
+                
+    //         // })
+    //     } else {
+    //         roomSelected.splice(index, 1);
+    //     }
+    //     setRoomSelected([...roomSelected]);
+    //     console.log(roomSelected);
+    // }
 
     return(
         <>
@@ -52,25 +64,27 @@ function Survey(props) {
             <CardBody>
                 <Form>
                     <FormGroup>
-                        <Label>Interior</Label>
+                        <Label>Options</Label>
                             <div>
-                                <CustomInput type="checkbox" id="kitchen" label="Kitchen" onClick={() => onCheckboxClicked("Kitchen")} active={roomSelected.includes("Kitchen")} inline/>
-                                <CustomInput type="checkbox" id="bathroom" label="Bathroom" onClick={() => onCheckboxClicked("Bathroom")} active={roomSelected.includes("Bathroom")} inline/>
-                                <CustomInput type="checkbox" id="bedroom" label="Bedroom" onClick={() => onCheckboxClicked("Bedroom")} active={roomSelected.includes("Bedroom")} inline/>
-                                <CustomInput type="checkbox" id="laundry" label="Laundry Room" onClick={() => onCheckboxClicked("Laundry Room")} active={roomSelected.includes("Laundry Room")} inline/>
-                                <CustomInput type="checkbox" id="living" label="Living Room" onClick={() => onCheckboxClicked("Living Room")} active={roomSelected.includes("Living Room")} inline/>
-                                <CustomInput type="checkbox" id="basement" label="Basement" onClick={() => onCheckboxClicked("Basement")} active={roomSelected.includes("Basement")} inline/>
-                            </div>
-                            <br></br>
-                        <Label>Exterior</Label>
-                            <div>
-                                <CustomInput type="checkbox" id="garage" label="Garage" onClick={() => onCheckboxClicked("Garage")} active={roomSelected.includes("Garage")} inline/>
-                                <CustomInput type="checkbox" id="exterior" label="Exterior" onClick={() => onCheckboxClicked("Exterior")} active={roomSelected.includes("Exterior")} inline/>
-                                <CustomInput type="checkbox" id="backyard" label="Backyard" onClick={() => onCheckboxClicked("Backyard")} active={roomSelected.includes("Backyard")} inline/>
-                                <CustomInput type="checkbox" id="pool" label="Pool" onClick={() => onCheckboxClicked("Pool")} active={roomSelected.includes("Pool")} inline/>
+                                {preset.map((preset) => (
+                                    <CustomInput 
+                                    type="checkbox" 
+                                    id={preset.roomName} 
+                                    key={preset._id}
+                                    label={preset.roomName}
+                                    name={preset.roomName}
+                                    onClick={handleChange()}
+                                    // active={handleChange()}
+                                    // onClick={() => onCheckboxClicked({preset.roomName})} 
+                                    // active={setRoomSelected(preset.roomName)} 
+                                    />
+                                ))}
                             </div>
                     </FormGroup>
-                    <Button className="" size="lg" block>Take me Home!</Button>
+                    <Button 
+                    className="" 
+                    size="lg" 
+                    block>Take me Home!</Button>
                 </Form>
             </CardBody>
         </Card>

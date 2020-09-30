@@ -8,7 +8,8 @@ import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
-import RoomModal from '../components/Modal'
+import RoomModal from '../components/Modal';
+import { Link } from 'react-router-dom';
 
 export default function Home(props) {
   const { userId } = useUserContext();
@@ -24,8 +25,10 @@ export default function Home(props) {
   function loadCards() {
     API.getAllRooms(userId)
       .then((res) => {
-        console.log(res);
-        setCards(res);
+        if (res !== null) {
+          console.log(res);
+          setCards(res);        
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -105,7 +108,11 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="/survey" className="roomBtn">New floorplan? Retake the survey here</Button>
+              
+                <Link to="/survey">
+                  <Button className="roomBtn">New floorplan? Retake the survey here</Button>
+                </Link>
+              
         </Card> 
         <Card body inverse className="lastCard"
               style={{ 
@@ -115,7 +122,11 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="" className="roomBtn"> Room Modal Test</Button>
+              
+                <Link to="/value">
+                  <Button className="roomBtn"> Room Modal Test</Button>
+                </Link>
+              
               <RoomModal value="cards"/>
         </Card>   
         </Wrapper> 
