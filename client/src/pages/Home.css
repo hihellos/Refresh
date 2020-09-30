@@ -18,6 +18,9 @@
 
   .roomBtn {
     margin-bottom: -50;
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    color: #ffb000;
   }
 
   .pageBreak {
