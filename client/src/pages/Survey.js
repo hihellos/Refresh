@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
-import {Row} from '../components/Grid';
-import { Card, Button, CardTitle, CardBody, CardHeader, Form, FormGroup, Label, Input, CustomInput} from "reactstrap";
+import { Card, Button, CardBody, CardHeader, Form, FormGroup, Label, CustomInput} from "reactstrap";
 import "./Home.css";
-import Wrapper from "../components/Wrapper";
 
 function Survey(props) {
+
+    const [preset, setPreset] = useState([]);
+    const [roomSelected, setRoomSelected] = useState([]);
+
+    useEffect(() => {
+        renderRooms();
+    }, []);
+
+    const renderRooms = () => {
+        API.getSeededRooms()
+        .then(res => {
+            // console.log(res);
+            setPreset(res.data);
+        })
+        .catch(err => console.log(err));
+    }
 
     const handleLogOutRequest = (e) => {
         console.log("User trying to log out");
@@ -22,6 +36,26 @@ function Survey(props) {
           .catch((err) => console.log(err));
       };
 
+    function handleChange(event) {
+        // setRoomSelected({value: event.target.value});
+        
+        console.log("event is ", event);
+    }
+
+    // const onCheckboxClicked = (selected) => {
+    //     const index = roomSelected.indexOf(selected);
+    //     if (index < 0) {
+    //         roomSelected.push(selected);
+    //         // API.saveRooms({
+                
+    //         // })
+    //     } else {
+    //         roomSelected.splice(index, 1);
+    //     }
+    //     setRoomSelected([...roomSelected]);
+    //     console.log(roomSelected);
+    // }
+
     return(
         <>
         <Navbar logout={() => handleLogOutRequest()} />
@@ -30,24 +64,27 @@ function Survey(props) {
             <CardBody>
                 <Form>
                     <FormGroup>
-                        <Label>Interior</Label>
+                        <Label>Options</Label>
                             <div>
-                                <CustomInput type="checkbox" id="kitchen" label="Kitchen" inline/>
-                                <CustomInput type="checkbox" id="bathroom" label="Bathroom" inline/>
-                                <CustomInput type="checkbox" id="bedroom" label="Bedroom" inline/>
-                                <CustomInput type="checkbox" id="laundry" label="Laundry Room" inline/>
-                                <CustomInput type="checkbox" id="living" label="Living Room" inline/>
-                                <CustomInput type="checkbox" id="basement" label="Basement" inline/>
-                            </div>
-                            <br></br>
-                        <Label>Exterior</Label>
-                            <div>
-                                <CustomInput type="checkbox" id="garage" label="Garage" inline/>
-                                <CustomInput type="checkbox" id="exterior" label="Exterior" inline/>
-                                <CustomInput type="checkbox" id="backyard" label="Backyard" inline/>
-                                <CustomInput type="checkbox" id="pool" label="Pool" inline/>
+                                {preset.map((preset) => (
+                                    <CustomInput 
+                                    type="checkbox" 
+                                    id={preset.roomName} 
+                                    key={preset._id}
+                                    label={preset.roomName}
+                                    name={preset.roomName}
+                                    onClick={handleChange()}
+                                    // active={handleChange()}
+                                    // onClick={() => onCheckboxClicked({preset.roomName})} 
+                                    // active={setRoomSelected(preset.roomName)} 
+                                    />
+                                ))}
                             </div>
                     </FormGroup>
+                    <Button 
+                    className="" 
+                    size="lg" 
+                    block>Take me Home!</Button>
                 </Form>
             </CardBody>
         </Card>

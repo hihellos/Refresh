@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import "./style.css";
 
 const NewNav = (props) => {
@@ -25,13 +18,14 @@ const NewNav = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/home">Home</NavLink>
+              {/* <NavLink href="/home">Home</NavLink> */}
+              <Link to="/home">Home</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/value">Value</NavLink>
+              <Link to="/value">Value</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">Logout</NavLink>
+              <Link to="/login">Logout</Link>
             </NavItem>
           </Nav>
         </Collapse>

@@ -169,7 +169,6 @@ export default function Login(props) {
           </form>
 
             <Facebook/>
-            <RoomModal/>
 
         </div>
       </Grid>
