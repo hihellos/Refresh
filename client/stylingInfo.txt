@@ -6,3 +6,27 @@ salmon - #ff6f5b
 RoomBox Tile background images:
 width: 300px
 height: auto
+
+add React component for title?:
+<div className="title"><span className="rStyle">R</span>efreshed</div>
+
+add to index.html:
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
+
+add to Home.css:
+.title{
+    font-family: 'Cookie', cursive;
+    font-size: 75px;
+}
+.rStyle{
+    font-family: 'Stalemate', cursive;
+    font-size: 75px;
+}
+
+NavBar:
+do we like green nav bar?
+or 
+do we do white nav bar with green text
+    add logo next to name
+    add hover color to be green with white text

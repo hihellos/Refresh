@@ -18,7 +18,9 @@ const NewNav = (props) => {
   return (
     <div>
       <Navbar className="navStyle" light expand="md">
-        <NavbarBrand href="/home">Refresh</NavbarBrand>
+        <NavbarBrand href="/home" className="title"> 
+          <span className="rStyle">R</span>efreshed 
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -26,7 +28,7 @@ const NewNav = (props) => {
               <NavLink href="/home">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/components/">Value</NavLink>
+              <NavLink href="/value">Value</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/login">Logout</NavLink>
