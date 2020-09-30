@@ -73,7 +73,7 @@ export default function Home(props) {
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
-              <Card body inverse key={card._id}
+              <Card body inverse key={card.id}
               style={{ 
                 backgroundImage: `url(${card.image})`, 
                 backgroundRepeat: 'no-repeat',
@@ -115,7 +115,8 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href="" className="roomBtn"><RoomModal/> Room Modal Test</Button>
+              <Button href="" className="roomBtn"> Room Modal Test</Button>
+              <RoomModal value="cards"/>
         </Card>   
         </Wrapper> 
         

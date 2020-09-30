@@ -7,6 +7,8 @@ import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
 import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
+import RoomModal from '../components/Modal'
+
 
 export default function Login(props) {
   const { setUserId } = useUserContext();
@@ -167,6 +169,7 @@ export default function Login(props) {
           </form>
 
             <Facebook/>
+            <RoomModal/>
 
         </div>
       </Grid>
