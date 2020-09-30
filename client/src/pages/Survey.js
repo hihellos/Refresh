@@ -34,12 +34,20 @@ function Survey(props) {
             console.log(`Status:${res.status} Successfully Logged Out`);
           })
           .catch((err) => console.log(err));
-      };
+    };
 
-    function handleChange(event) {
-        const value = event.target.name;
-        console.log(roomSelected);
-        setRoomSelected([...roomSelected, {name: value}]);
+    function handleChange({ target }) {
+        const value = target.name;
+        const valueFilter = roomSelected.filter(e => e.name === value)
+
+        if (valueFilter.length === 0) {
+            setRoomSelected([...roomSelected, {name: value}]);
+            console.log("You don't have this")          
+        } else {
+            const without = roomSelected.filter(e => e.name !== value);
+            setRoomSelected(without);
+            console.log("You have this")
+        }
     }
 
     // const onCheckboxClicked = (selected) => {
