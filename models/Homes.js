@@ -3,15 +3,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const homeSchema = new Schema({
-  room: {
+  name: {
     type: String,
     required: true,
   },
-  image: String,
+  
+  image: {
+    type: String,
+    required: true,
+  },
+  
+  id: {
+    type: Number,
+    required:true,
+  },
 
-  questions: [
+  tasks: [
     {
       name: String,
+      index: Number,
       cost: Number,
       isFixed: {
         type: Boolean,
