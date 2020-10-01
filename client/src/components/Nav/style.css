@@ -1,5 +1,14 @@
 .navStyle{
     background-color: #4cbb17;
     font-family: 'Courier Prime', monospace;
-    font-size: 12px;
+    font-size: 18px;
+}
+.title{
+    font-family: 'Cookie', cursive;
+    font-size: 30px;
+}
+.rStyle{
+    font-family: 'Stalemate', cursive;
+    font-size: 34px;
+    font-weight: bolder;
 }
