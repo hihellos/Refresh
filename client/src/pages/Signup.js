@@ -3,7 +3,10 @@ import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Paper }
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import API from '../utils/API';
-import { PromiseProvider } from 'mongoose';
+import { useAppContext } from '../utils/AppContext';
+import { useUserContext } from "../utils/UserContext";
+
+// import { PromiseProvider } from 'mongoose';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp(props) {
+  const { setUserId } = useUserContext();
+  const { userHasAuthenticated } = useAppContext();
   const [user, setUser] = useState(
     {
       firstName: "",
@@ -54,9 +59,7 @@ export default function SignUp(props) {
   const handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log('user input', name, value);
     setUser({...user, [name]: value});
-    console.log('user is', user);
   }
   
   const handleFormSubmit = e => {
@@ -72,9 +75,12 @@ export default function SignUp(props) {
       .then(res => {
         console.log(res);
         if (res.statusText === "Created") {
-          props.history.push("/home");
+          userHasAuthenticated(true);
+          setUserId(res.data);
+          props.history.push("/survey");
         } else {
-          props.history.push("/")
+          userHasAuthenticated(false);
+          props.history.push("/");
         }
       })
       .catch(err => console.log(err));
@@ -82,6 +88,9 @@ export default function SignUp(props) {
   }
 
   const classes = useStyles();
+  const routeChange = (e) => {
+    props.history.push("/login");
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -160,7 +169,7 @@ export default function SignUp(props) {
           </Button>
           <Grid container justify="center">
             <Grid item className={classes.signUp}>
-              <Link href="/login" variant="body2">
+              <Link onClick={routeChange} variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

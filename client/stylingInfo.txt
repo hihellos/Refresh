@@ -21,9 +21,13 @@ add to Home.css:
 }
 .rStyle{
     font-family: 'Stalemate', cursive;
-    font-size: 75px;
+    font-size: 80px;
 }
 
+body{
+    font-family: 'Courier Prime', monospace;
+
+}
 NavBar:
 do we like green nav bar?
 or 

@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require('mongoose');
 
 module.exports = {
   
@@ -9,30 +10,31 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  
+
+  // db.users.findOneAndUpdate({_id: ObjectId("5f7612db740410124c9c6058")}, { $push: {rooms:"5f7614f49a08314b0c4e6ccd"}})
 
   saveUserRooms: function(req, res) {
-    db.Home
-      .create(req.body)
-      .then(db => 
-        console.log(db,'room saved')
-        // console.log(db)
-        // res.json(db)
-      )
+    db.Home.create(req.body)
+      .then((res) => {
+        res.map(e => {
+          db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: e._id } }, { new: true })
+          .then(res => console.log('response message',res))
+          .catch(err => console.log('error message',err));
+        });
+      })
       .catch(err => {
         console.log(err);
-        // res.status(422).json(err);
       });
   },
   
-  make: function(req, res) {
-    db.Home.create(req.body)
-      // .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
-      .then(dbHome => {
-        res.json(dbHome);
-      })
-      .catch(err => res.status(422).json(err));
-  },
+  // make: function(req, res) {
+  //   db.Home.create(req.body)
+  //     // .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
+  //     .then(dbHome => {
+  //       res.json(dbHome);
+  //     })
+  //     .catch(err => res.status(422).json(err));
+  // },
   
   create: function(req, res) {
     db.Home.create(req.body)
