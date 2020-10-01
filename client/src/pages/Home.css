@@ -1,3 +1,9 @@
+.header{
+  font-family: 'Cookie', cursive;
+  font-size: 150px;
+  color: #4cbb17
+}
+
 .card {
     background: #fff;
     border-radius: 2px;

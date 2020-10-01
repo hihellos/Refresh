@@ -4,15 +4,14 @@ const apiRoutes = require("./api");
 const authController = require("../controllers/authController");
 const { checkUser, requireAuth } = require("../middleware/authMiddleware");
 
+// API Routes
+router.use("/api", apiRoutes);
+
 // Main Routes
-router.get("*", checkUser);
 router.get("/home", requireAuth, (req, res) => res.redirect('/login'));
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
-
-// API Routes
-router.use("/api", apiRoutes);
 
 // Auth Routes
 router.route("/login")
@@ -26,6 +25,6 @@ router.route("/signup")
 router.get("/logout", authController.logoutGet)
 
 router.get("/jwt", authController.jwtGet)
-
+router.get("*", checkUser);
 module.exports = router;
 

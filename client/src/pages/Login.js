@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Paper} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import Facebook from '../../src/components/Facebook/Facebook';
+// import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
-import RoomModal from '../components/Modal'
+// import RoomModal from '../components/Modal'
 
 
 export default function Login(props) {
@@ -40,8 +40,8 @@ export default function Login(props) {
           setUserId(res.data.user);
           props.history.push("/home");
         }
-        console.log(res.data);
-        console.log(`${res.data.user} has logged in`)
+        // console.log(res.data);
+        // console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
     }
@@ -84,6 +84,9 @@ export default function Login(props) {
   }));
 
   const classes = useStyles();
+  const routeChange = (e) => {
+    props.history.push("/signup");
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -129,25 +132,7 @@ export default function Login(props) {
               color="primary"
               className={classes.submit}>
               onClick={"YourFunctionHere"} */}
-          {/* </Button> */}
-          <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}>
-              {/* onClick={"YourFunctionHere"} */}
-            Login with GitHub
-          </Button>
-          <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}>
-              {/* onClick={"YourFunctionHere"} */}
-            Login with Google
-          </Button>
+            {/* </Button> */}
             <Button
               type="submit"
               fullWidth
@@ -160,14 +145,15 @@ export default function Login(props) {
             </Button>
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
-                <Link href="/signup" variant="body2" >
+                <Link variant="body2" onClick={routeChange} >
                   Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
           </form>
 
-            <Facebook/>
+            {/* <Facebook/>
+            <Google/> */}
 
         </div>
       </Grid>

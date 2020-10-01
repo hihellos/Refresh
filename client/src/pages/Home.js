@@ -16,9 +16,8 @@ export default function Home(props) {
   const [cards, setCards] = useState([]);
   
   useEffect(() => {
-    onLoad();
     loadCards();
-  }, []);
+  }, []); 
 
   function loadCards() {
     API.getAllRooms(userId)
@@ -30,11 +29,7 @@ export default function Home(props) {
       })
       .catch((err) => console.log(err));
   }
-
-  function onLoad() {
-    userHasAuthenticated(true);
-  }
-
+  
   const handleLogOutRequest = (e) => {
     console.log("User trying to log out");
     API.outUser()
@@ -55,13 +50,13 @@ export default function Home(props) {
       <Navbar logout={handleLogOutRequest} />
       <div className="row">
         <div className="col-md-12 pageBreak">
-           <h3 >Refresh Your Home</h3>
+         <span className="header">Refresh</span>
         </div >
       </div>
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
-              <Card body inverse key={card.id}
+              <Card body inverse key={card._id}
               style={{ 
                 backgroundImage: `url(${card.image})`, 
                 backgroundRepeat: 'no-repeat',
@@ -69,7 +64,11 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              <Button href={"google.com"} className="roomBtn">{card.room}</Button>
+              {/* <Button className="roomBtn"> */}
+                <RoomModal value={card}>
+                {/* {card.roomName} */}
+                </RoomModal>
+              {/* </Button> */}
             </Card>
           ))}
         </Wrapper>
@@ -78,9 +77,11 @@ export default function Home(props) {
         <div className="row">
         <div className="col-md-12 pageBreak">
           <h3>What a gorgeous empty lot!</h3>
-          <Button href="/survey">Click me to add rooms!</Button>
-          </div>
-          </div>
+            <Button>
+              <Link to="/survey">Click me to add rooms!</Link>
+            </Button>
+         </div>
+         </div>
         </>
       )} 
       <div className="row">
@@ -105,7 +106,7 @@ export default function Home(props) {
         </Card> 
         <Card body inverse className="lastCard"
               style={{ 
-                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundImage: `url(./assets/images/homeValue.jpg)`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
