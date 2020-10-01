@@ -35,9 +35,9 @@ export default class Facebook extends Component {
     render() {
         let fbContent;
 
-        if(this.state.isLoggedIn) {
-            fbContent = null;
-        } else {
+        // if(this.state.isLoggedIn) {
+        //     fbContent = null;
+        // } else {
             fbContent = (
                 <FacebookLogin
                 appId="363512615022429"
@@ -49,7 +49,7 @@ export default class Facebook extends Component {
                 textButton = "&nbsp;&nbsp;Sign In with Facebook"
                 />
             )
-        }
+        // }
 
         return (
             <div>
