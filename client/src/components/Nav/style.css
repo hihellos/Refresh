@@ -1,21 +1,28 @@
 .navStyle{
-    background-color: #4cbb17;
+    background-color:white;
  
 }
 .title{
     font-family: 'Cookie', cursive;
     font-size: 30px;
-    color:white;
+    font-weight: lighter;
+    color:#4cbb17;
 }
 .rStyle{
     font-family: 'Stalemate', cursive;
     font-size: 32px;
-    color: white;
+    color:#4cbb17;
 }
 
 .navLink{
-    font-family: 'Courier Prime', monospace;
-    font-size: 18px;
-    color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color:#4cbb17;
+}
+
+.navLink:hover{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+   
 }
 
