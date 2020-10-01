@@ -34,27 +34,34 @@ function Survey(props) {
             console.log(`Status:${res.status} Successfully Logged Out`);
           })
           .catch((err) => console.log(err));
-      };
+    };
 
-    function handleChange(event) {
-        // setRoomSelected({value: event.target.value});
-        
-        console.log("event is ", event);
+    function handleChange({ target }) {
+        const value = target.name;
+        const presetChoice = preset.filter(e => e.roomName === value); // check preset
+        const valueFilter = roomSelected.filter(e => e.roomName === value)
+        if (valueFilter.length === 0) {
+            setRoomSelected([...roomSelected,
+                {
+                    // _id: presetChoice[0]._id,
+                    roomName: presetChoice[0].roomName,
+                    images: presetChoice[0].image,
+                    tasks: presetChoice[0].tasks
+                }
+            ])
+        } else {
+            const without = roomSelected.filter(e => e.roomName !== value)
+            setRoomSelected(without);
+        }
     }
 
-    // const onCheckboxClicked = (selected) => {
-    //     const index = roomSelected.indexOf(selected);
-    //     if (index < 0) {
-    //         roomSelected.push(selected);
-    //         // API.saveRooms({
-                
-    //         // })
-    //     } else {
-    //         roomSelected.splice(index, 1);
-    //     }
-    //     setRoomSelected([...roomSelected]);
-    //     console.log(roomSelected);
-    // }
+    const handleSubmitRequest = (e) => {
+        e.preventDefault();
+        console.log(roomSelected);
+        API.saveUserRooms(roomSelected)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
 
     return(
         <>
@@ -73,10 +80,7 @@ function Survey(props) {
                                     key={preset._id}
                                     label={preset.roomName}
                                     name={preset.roomName}
-                                    onClick={handleChange()}
-                                    // active={handleChange()}
-                                    // onClick={() => onCheckboxClicked({preset.roomName})} 
-                                    // active={setRoomSelected(preset.roomName)} 
+                                    onClick={handleChange}
                                     />
                                 ))}
                             </div>
@@ -84,7 +88,10 @@ function Survey(props) {
                     <Button 
                     className="" 
                     size="lg" 
-                    block>Take me Home!</Button>
+                    block
+                    onSubmit={handleSubmitRequest}
+                    >Take me Home!
+                    </Button>
                 </Form>
             </CardBody>
         </Card>

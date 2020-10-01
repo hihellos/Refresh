@@ -21,21 +21,17 @@ function App() {
   },[])
 
   function onLoad() {
-    API.checkUser(userId)
+    API.getJwt()
     .then(res => {
-      console.log(res);
+      if (res.data === "Token Exist") {
+        console.log(res);
+        userHasAuthenticated(true);
+      } else {
+        userHasAuthenticated(false);
+      }
     })
+    .catch(err => console.log(err));
   }
-
-  // function onLoad() {
-  //   API.getJwt()
-  //   .then(res => {
-  //     console.log(res)
-  //     userHasAuthenticated(true);
-  //   })
-  //   .catch(err => console.log(err));
-  //   setIsAuthenticating(false);
-  // }
 
   return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
@@ -44,10 +40,11 @@ function App() {
       <Switch>
         <Route exact path={["/","/login"]} component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/home" component={Home} />
+        {/* <Route exact path="/home" component={Home} /> */}
+        {/* <Route exact path="/survey" component={Survey} /> */}
         <Route exact path="/value" component={Value} />
-        <Route exact path="/survey" component={Survey} />
-        {/* <GuardedRoute path='/home' component={Home} auth={isAuthenticated} /> */}
+        <GuardedRoute path='/home' component={Home} auth={isAuthenticated} />
+        <GuardedRoute path="/survey" component={Survey} auth={isAuthenticated} />
       </Switch>
     </Router>
     </UserContext.Provider>

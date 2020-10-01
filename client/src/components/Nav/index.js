@@ -18,14 +18,13 @@ const NewNav = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              {/* <NavLink href="/home">Home</NavLink> */}
               <Link to="/home">Home</Link>
             </NavItem>
             <NavItem>
               <Link to="/value">Value</Link>
             </NavItem>
-            <NavItem>
-              <Link to="/login">Logout</Link>
+            <NavItem onClick={props.logout}>
+              Logout
             </NavItem>
           </Nav>
         </Collapse>

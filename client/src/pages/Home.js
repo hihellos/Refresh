@@ -16,7 +16,6 @@ export default function Home(props) {
   const { userHasAuthenticated } = useAppContext();
   const [cards, setCards] = useState([]);
   
-  //Load all books and store them with setCards
   useEffect(() => {
     onLoad();
     loadCards();
@@ -36,20 +35,6 @@ export default function Home(props) {
   function onLoad() {
     userHasAuthenticated(true);
   }
-  // function onLoad() {
-  //   API.getJwt()
-  //   .then(res => {
-  //     if (res.data === "No Token"){
-  //     userHasAuthenticated(false);
-  //       props.history.push("/");
-  //     }
-  //     else {
-  //       userHasAuthenticated(true);
-  //     }
-  //   })
-  //   .catch(err => console.log(err))
-  //   // setIsAuthenticating(false);
-  // }
 
   const handleLogOutRequest = (e) => {
     console.log("User trying to log out");
@@ -58,6 +43,7 @@ export default function Home(props) {
         console.log(props);
         console.log(res);
         if (res.status === 200) {
+          userHasAuthenticated(false);
           props.history.push("/");
         }
         console.log(`Status:${res.status} Successfully Logged Out`);
@@ -67,7 +53,7 @@ export default function Home(props) {
 
   return (
     <>
-      <Navbar logout={() => handleLogOutRequest()} />
+      <Navbar logout={handleLogOutRequest} />
       <Row>
         <Col-md>
            <h3 className="pageBreak">Refresh Your Home</h3>
