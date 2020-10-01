@@ -21,7 +21,7 @@ add to Home.css:
 }
 .rStyle{
     font-family: 'Stalemate', cursive;
-    font-size: 75px;
+    font-size: 80px;
 }
 
 body{
