@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 // import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
-import {Row} from '../components/Grid';
 import { Card, Button, CardTitle} from "reactstrap";
 import "./Home.css";
 import Wrapper from "../components/Wrapper";
@@ -54,11 +53,11 @@ export default function Home(props) {
   return (
     <>
       <Navbar logout={handleLogOutRequest} />
-      <Row>
-        <Col-md>
-           <h3 className="pageBreak">Refresh Your Home</h3>
-        </Col-md>
-      </Row>
+      <div className="row">
+        <div className="col-md-12 pageBreak">
+           <h3 >Refresh Your Home</h3>
+        </div >
+      </div>
       {cards.length ? (
         <Wrapper>
           {cards.map((card) => (
@@ -76,15 +75,19 @@ export default function Home(props) {
         </Wrapper>
       ) : (
         <>
+        <div className="row">
+        <div className="col-md-12 pageBreak">
           <h3>What a gorgeous empty lot!</h3>
           <Button href="/survey">Click me to add rooms!</Button>
+          </div>
+          </div>
         </>
       )} 
-      <Row>
-        <Col-md-12>
-        <h3 className="pageBreak">Extras</h3>
-        </Col-md-12>
-      </Row>
+      <div className="row">
+        <div className="col-md-12 pageBreak">
+           <h3 >Extras</h3>
+        </div >
+      </div>
       <Wrapper>
        <Card body inverse className="lastCard"
               style={{ 
@@ -110,11 +113,9 @@ export default function Home(props) {
               <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
               
                 <Link to="/value">
-                  <Button className="roomBtn"> Room Modal Test</Button>
+                  <Button className="roomBtn">Visit your home calculator</Button>
                 </Link>
-              
-              <RoomModal value="cards"/>
-        </Card>   
+          </Card>   
         </Wrapper> 
         
     </>

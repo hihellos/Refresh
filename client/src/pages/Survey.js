@@ -66,7 +66,7 @@ function Survey(props) {
     return(
         <>
         <Navbar logout={() => handleLogOutRequest()} />
-        <Card style={{ width: '50rem'}} >
+        <Card>
             <CardHeader><h2>Select the rooms in your home floor plan:</h2></CardHeader>
             <CardBody>
                 <Form>
