@@ -39,7 +39,6 @@ export default function Login(props) {
           userHasAuthenticated(true);
           setUserId(res.data.user);
           props.history.push("/home");
-          // <Redirect to="/home" />
         }
         console.log(res.data);
         console.log(`${res.data.user} has logged in`)

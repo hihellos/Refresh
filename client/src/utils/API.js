@@ -22,10 +22,15 @@ export default {
         .catch(err => console.log(err));
     },
 
-    // //save selected rooms from survey
-    // saveRooms: function(roomdata) {
-    //     return axios.post("/api/home" + userId , rooms)
-    // },
+    saveUserRooms: function(query) {
+        console.log(query);
+        axios.post("/api/home/rooms", query)
+        .then(res => {
+            console.log(res);
+            return res;
+        })
+        .catch(err => console.log(err))
+    },
 
     getSeededRooms: function() {
         return axios.get("/api/home")
@@ -34,8 +39,17 @@ export default {
             return res;
         })
         .catch(err => console.log(err));
-
     },
+
+    // NOT IN USE
+    // getSelectedRooms: function(query) {
+    //     console.log(query)
+    //     axios.get("/api/home/select", query)
+    //     .then(res => {
+    //         console.log(res);
+    //     })
+    //     .catch((err) => console.log(err));
+    // },
 
     //getCard - gets aa the cards from user
     getAllRooms: function(userId) {

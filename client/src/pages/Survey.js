@@ -34,13 +34,7 @@ function Survey(props) {
             console.log(`Status:${res.status} Successfully Logged Out`);
           })
           .catch((err) => console.log(err));
-      };
-
-    // function handleChange(event) {
-    //     const value = event.target.name;
-    //     console.log(roomSelected);
-    //     setRoomSelected([...roomSelected, {name: value}]);
-    // }
+    };
 
     function handleChange({ target }) {
         const value = target.name;
@@ -59,27 +53,15 @@ function Survey(props) {
             const without = roomSelected.filter(e => e.roomName !== value)
             setRoomSelected(without);
         }
-        console.log(roomSelected);
     }
 
-    const onButtonClick = (e) => {
+    const handleSubmitRequest = (e) => {
         e.preventDefault();
-        console.log('button clicked');
-        
+        console.log(roomSelected);
+        API.saveUserRooms(roomSelected)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
-    // const onCheckboxClicked = (selected) => {
-    //     const index = roomSelected.indexOf(selected);
-    //     if (index < 0) {
-    //         roomSelected.push(selected);
-    //         // API.saveRooms({
-                
-    //         // })
-    //     } else {
-    //         roomSelected.splice(index, 1);
-    //     }
-    //     setRoomSelected([...roomSelected]);
-    //     console.log(roomSelected);
-    // }
 
     return(
         <>
@@ -99,9 +81,6 @@ function Survey(props) {
                                     label={preset.roomName}
                                     name={preset.roomName}
                                     onClick={handleChange}
-                                    // active={handleChange()}
-                                    // onClick={() => onCheckboxClicked({preset.roomName})} 
-                                    // active={setRoomSelected(preset.roomName)} 
                                     />
                                 ))}
                             </div>
@@ -110,7 +89,7 @@ function Survey(props) {
                     className="" 
                     size="lg" 
                     block
-                    onClick={onButtonClick}
+                    onSubmit={handleSubmitRequest}
                     >Take me Home!
                     </Button>
                 </Form>
