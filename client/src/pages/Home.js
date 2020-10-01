@@ -77,7 +77,7 @@ export default function Home(props) {
         <div className="row">
         <div className="col-md-12 pageBreak">
           <h3>What a gorgeous empty lot!</h3>
-            <Button>
+            <Button class="roomBtn">
               <Link to="/survey">Click me to add rooms!</Link>
             </Button>
          </div>
