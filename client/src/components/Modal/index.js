@@ -35,20 +35,13 @@ const RoomModal = (props) => {
                             </tr>
                         </thead>
                         {/* <tbody>
-                            {props.value.length ? (
-                                    {props.value.map((task) => (
-                                        <tr>
-                                        <th> </th>
-                                        {task.name.map((listItem) => (
-                                            <td>{listItem.name}</td>))}
-                                        </tr>
-                                    ))}
-                                 ) : (
-                                    <>
-                                    <h3>This room is refreshed!</h3>
-                                    </>
-                                 )} 
-                        </tbody> */}
+                            {props.value[0].map((task) => (
+                                <tr>
+                                  <td>{task.isFixed}</td>
+                                  <td>{task.taskName}</td>
+                                </tr>
+                            ))}
+                        </tbody>  */}
                         </Table>
                 <br />
             <Button color="success" onClick={toggleNested}>Add Task</Button>

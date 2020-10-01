@@ -12,7 +12,8 @@ let homeSeed = [
             image: "./assets/images/kitchen1.jpg",
             tasks: [
                 {
-                    taskName: "Refinish cabinets",                    cost: 500
+                    taskName: "Refinish cabinets",
+                    cost: 500
                 },
                 {
                     taskName: "Add recessed lighting",
@@ -29,13 +30,12 @@ let homeSeed = [
             image: "./assets/images/bathroom1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Refinish bathtub",
+                    cost: 500,
                 },
                 {
                     taskName: "Replace showerhead",
                     cost: 500,
-                    isFixed: false
                 },
             ],
         },
@@ -44,13 +44,12 @@ let homeSeed = [
             image: "./assets/images/bedroom2.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "New Paint",
+                    cost: 200,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Clean baseboards",
+                    cost: 50,
                 },
             ],
         },
@@ -59,13 +58,16 @@ let homeSeed = [
             image: "./assets/images/laundryroom1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Professional vent cleaning",
+                    cost: 200,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Deep clean washer",
+                    cost: 100,
+                },
+                {
+                    taskName: "New utility sink",
+                    cost: 100,
                 },
             ],
         },
@@ -74,13 +76,12 @@ let homeSeed = [
             image: "./assets/images/livingroom1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "New paint",
+                    cost: 500,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Refinish floors",
+                    cost: 1200,
                 },
             ],
         },
@@ -89,13 +90,12 @@ let homeSeed = [
             image: "./assets/images/garage1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Reorganize shelving",
+                    cost: 100,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Pressure wash floor",
+                    cost: 200,
                 },
             ],
         },
@@ -104,13 +104,16 @@ let homeSeed = [
             image: "./assets/images/exterior1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Pressure wash walkway, deck, driveway",
+                    cost: 500,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Add solar panels",
+                    cost: 20000,
+                },
+                {
+                    taskName: "Spruce up curb appeal",
+                    cost: 100,
                 },
             ],
         },
@@ -119,13 +122,16 @@ let homeSeed = [
             image: "./assets/images/yard1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Reseed grass",
+                    cost: 200,
                 },
                 {
-                    taskName: "Replace showerhead",
+                    taskName: "Repair retaining wall",
                     cost: 500,
-                    isFixed: false
+                },
+                {
+                    taskName: "Refinish fence",
+                    cost: 500,
                 },
             ],
         },
@@ -134,13 +140,12 @@ let homeSeed = [
             image: "./assets/images/pool1.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Drain and clean out filters",
+                    cost: 700,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Buy pool vacuum",
+                    cost: 200,
                 },
             ],
         },
@@ -149,13 +154,12 @@ let homeSeed = [
             image: "./assets/images/hvac.jpg", 
             tasks: [
                 {
-                    taskName: "Refinish bathtub",                    cost: 500,
-                    isFixed: false
+                    taskName: "Polish concrete",
+                    cost: 400,
                 },
                 {
-                    taskName: "Replace showerhead",
-                    cost: 500,
-                    isFixed: false
+                    taskName: "Refelt pool table",
+                    cost: 200,
                 },
             ],
         },
