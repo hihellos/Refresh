@@ -36,12 +36,37 @@ function Survey(props) {
           .catch((err) => console.log(err));
       };
 
-    function handleChange(event) {
-        const value = event.target.name;
+    // function handleChange(event) {
+    //     const value = event.target.name;
+    //     console.log(roomSelected);
+    //     setRoomSelected([...roomSelected, {name: value}]);
+    // }
+
+    function handleChange({ target }) {
+        const value = target.name;
+        const presetChoice = preset.filter(e => e.roomName === value); // check preset
+        const valueFilter = roomSelected.filter(e => e.roomName === value)
+        if (valueFilter.length === 0) {
+            setRoomSelected([...roomSelected,
+                {
+                    // _id: presetChoice[0]._id,
+                    roomName: presetChoice[0].roomName,
+                    images: presetChoice[0].image,
+                    tasks: presetChoice[0].tasks
+                }
+            ])
+        } else {
+            const without = roomSelected.filter(e => e.roomName !== value)
+            setRoomSelected(without);
+        }
         console.log(roomSelected);
-        setRoomSelected([...roomSelected, {name: value}]);
     }
 
+    const onButtonClick = (e) => {
+        e.preventDefault();
+        console.log('button clicked');
+        
+    }
     // const onCheckboxClicked = (selected) => {
     //     const index = roomSelected.indexOf(selected);
     //     if (index < 0) {
@@ -84,8 +109,9 @@ function Survey(props) {
                     <Button 
                     className="" 
                     size="lg" 
-                    block>Take me Home!
-                    {/* onClick={} */}
+                    block
+                    onClick={onButtonClick}
+                    >Take me Home!
                     </Button>
                 </Form>
             </CardBody>
