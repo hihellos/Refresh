@@ -26,29 +26,7 @@ const homeSchema = new Schema({
   roomCreated: {
     type: Date,
     default: Date.now,
-  },
-
-  presets: [    
-    {
-      roomName: {
-        type: String,
-        required: true
-      },
-      image: String,
-
-      tasks: [
-        {
-          taskName: String,
-          id: Number,
-          cost: Number,
-          isFixed: {
-            type: Boolean,
-            default: false
-          }
-        }
-      ]
-    }
-  ]
+  }
 });
 const Home = mongoose.model("Home", homeSchema);
 

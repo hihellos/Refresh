@@ -81,7 +81,7 @@ module.exports = {
     logoutGet: async function (req, res) {
         try {
         res.cookie('jwt',  '', { maxAge: 1 });
-        res.status(200).json('Logged Out');
+        res.status(200).json('Cookie reset');
         // console.log('----------------\n',res);
         }
         catch (err) {
@@ -93,11 +93,11 @@ module.exports = {
         try {
             let token = req.cookies.jwt;
             if (token) {
-                console.log("token exist")
-                console.log('jwtGet:\n',token);
-                res.json(token);
+                // console.log("token exist")
+                // console.log('jwtGet:\n',token);
+                res.json("Token Exist");
             } else {
-                console.log("token does not exist");
+                // console.log("token does not exist");
                 res.json("No Token");
             }
         }

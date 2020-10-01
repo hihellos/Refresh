@@ -10,12 +10,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   
-  // findById: function(req, res) {
-  //   db.Home
-  //     .findById(req.params.id)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+
+  saveUserRooms: function(req, res) {
+    db.Home
+      .create(req.body)
+      .then(db => 
+        console.log(db,'room saved')
+        // console.log(db)
+        // res.json(db)
+      )
+      .catch(err => {
+        console.log(err);
+        // res.status(422).json(err);
+      });
+  },
   
   make: function(req, res) {
     db.Home.create(req.body)
