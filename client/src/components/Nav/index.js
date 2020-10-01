@@ -11,22 +11,20 @@ const NewNav = (props) => {
   return (
     <div>
       <Navbar className="navStyle" light expand="md">
-        <NavbarBrand className="title">
-          <Link to="/home">
-            <span className="rStyle">R</span><span className="title">efreshed</span> 
-          </Link> 
+        <NavbarBrand> 
+          <span className="rStyle">R</span><span className="title">efreshed</span> 
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/home">Home</Link>
-            </NavItem>
+              <Link to="/home" class="navLink">|  Home  |</Link>
+            </NavItem>  
             <NavItem>
-              <Link to="/value">Value</Link>
-            </NavItem>
-            <NavItem onClick={props.logout}>
-              Logout
+              <Link to="/value" class="navLink">|  Value  |</Link>
+            </NavItem>  
+            <NavItem onClick={props.logout} >
+             <span class="navLink">|  Logout  |</span>
             </NavItem>
           </Nav>
         </Collapse>
