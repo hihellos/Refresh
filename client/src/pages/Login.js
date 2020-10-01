@@ -84,6 +84,9 @@ export default function Login(props) {
   }));
 
   const classes = useStyles();
+  const routeChange = (e) => {
+    props.history.push("/signup");
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -160,7 +163,7 @@ export default function Login(props) {
             </Button>
             <Grid container justify={'center'}>
               <Grid item  className={classes.signUp}>
-                <Link href="/signup" variant="body2" >
+                <Link variant="body2" onClick={routeChange} >
                   Don't have an account? Sign Up
                 </Link>
               </Grid>
