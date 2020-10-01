@@ -8,21 +8,16 @@ width: 300px
 height: auto
 
 add React component for title?:
-<div className="title"><span className="rStyle">R</span>efreshed</div>
+<span className="title">Refreshed</span>
 
 add to index.html:
 <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 
 add to Home.css:
-.title{
+.header{
     font-family: 'Cookie', cursive;
     font-size: 75px;
-}
-.rStyle{
-    font-family: 'Stalemate', cursive;
-    font-size: 80px;
 }
 
 body{

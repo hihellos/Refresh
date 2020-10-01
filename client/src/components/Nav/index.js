@@ -12,7 +12,7 @@ const NewNav = (props) => {
     <div>
       <Navbar className="navStyle" light expand="md">
         <NavbarBrand> 
-          <span className="title">Refreshed <img src="./assets/images/logo100x100.png" height="36px" width="36px" /></span>
+          <span className="title">Refresh<img src="./assets/images/logo100x100.png" height="36px" width="36px" /></span>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
