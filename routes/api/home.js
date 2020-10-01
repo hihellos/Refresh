@@ -1,18 +1,20 @@
 const router = require("express").Router();
 const homeController = require("../../controllers/homeController");
 
-// "/api/home"
+// match /api/home
 router.route("/")
   .get(homeController.findSeededRooms)
-  .post(homeController.make);
+  // .post(homeController.make);
   // .put(homeController.update)
   // .delete(homeController.remove);
 
+// match /api/home/rooms
+router.route("/rooms/:id")
+  .post(homeController.saveUserRooms);
+
+// match /api/home/:id
 router.route("/:id")
   .post(homeController.create);
-
-router.route("/rooms")
-  .post(homeController.saveUserRooms);
 
 module.exports = router;
 

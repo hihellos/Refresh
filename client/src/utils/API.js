@@ -16,26 +16,26 @@ export default {
     getJwt: function() {
         return axios.get("/jwt")
         .then(res => {
-            console.log(res);
+            // console.log(res);
             return res;
         })
         .catch(err => console.log(err));
     },
 
-    saveUserRooms: function(query) {
-        console.log(query);
-        axios.post("/api/home/rooms", query)
-        .then(res => {
-            console.log(res);
-            return res;
-        })
-        .catch(err => console.log(err))
+    saveUserRooms: function(id, query) {
+        console.log('saveUserRooms', query);
+        return axios.post("/api/home/rooms/" + id, query)
+        // .then(res => {
+        //     console.log("saveUserRooms returned", res);
+        //     return res;
+        // })
+        // .catch(err => console.log(err))
     },
 
     getSeededRooms: function() {
         return axios.get("/api/home")
         .then(res => {
-            console.log(res);
+            // console.log(res);
             return res;
         })
         .catch(err => console.log(err));

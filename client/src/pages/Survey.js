@@ -3,9 +3,10 @@ import API from "../utils/API";
 import Navbar from "../components/Nav/index";
 import { Card, Button, CardBody, CardHeader, Form, FormGroup, Label, CustomInput} from "reactstrap";
 import "./Home.css";
+import { useUserContext } from "../utils/UserContext";
 
 function Survey(props) {
-
+    const { userId } = useUserContext();
     const [preset, setPreset] = useState([]);
     const [roomSelected, setRoomSelected] = useState([]);
 
@@ -45,7 +46,7 @@ function Survey(props) {
                 {
                     // _id: presetChoice[0]._id,
                     roomName: presetChoice[0].roomName,
-                    images: presetChoice[0].image,
+                    image: presetChoice[0].image,
                     tasks: presetChoice[0].tasks
                 }
             ])
@@ -57,9 +58,11 @@ function Survey(props) {
 
     const handleSubmitRequest = (e) => {
         e.preventDefault();
-        console.log(roomSelected);
-        API.saveUserRooms(roomSelected)
-        .then(res => console.log(res))
+        console.log('hanldeSubmitRequest', roomSelected);
+        API.saveUserRooms(userId, roomSelected)
+        .then(res => {
+            console.log('handleSubmitRequest API return', res)
+        })
         .catch(err => console.log(err));
     }
 
@@ -89,7 +92,7 @@ function Survey(props) {
                     className="" 
                     size="lg" 
                     block
-                    onSubmit={handleSubmitRequest}
+                    onClick={handleSubmitRequest}
                     >Take me Home!
                     </Button>
                 </Form>
