@@ -13,6 +13,7 @@ add React component for title?:
 add to index.html:
 <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 
 add to Home.css:
 .title{
@@ -25,7 +26,7 @@ add to Home.css:
 }
 
 body{
-    font-family: 'Courier Prime', monospace;
+    font-family: 'Source Sans Pro', sans-serif;
 
 }
 NavBar:
