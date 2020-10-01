@@ -11,8 +11,10 @@ const NewNav = (props) => {
   return (
     <div>
       <Navbar className="navStyle" light expand="md">
-        <NavbarBrand href="/home" className="title"> 
-          <span className="rStyle">R</span>efreshed 
+        <NavbarBrand className="title">
+          <Link to="/home">
+            <span className="rStyle">R</span>efreshed 
+          </Link> 
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

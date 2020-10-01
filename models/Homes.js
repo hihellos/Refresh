@@ -23,6 +23,11 @@ const homeSchema = new Schema({
     },
   ],
 
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
+
   roomCreated: {
     type: Date,
     default: Date.now,

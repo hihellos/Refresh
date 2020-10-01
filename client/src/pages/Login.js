@@ -5,9 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
-import RoomModal from '../components/Modal'
+// import RoomModal from '../components/Modal'
 
 
 export default function Login(props) {
@@ -40,8 +40,8 @@ export default function Login(props) {
           setUserId(res.data.user);
           props.history.push("/home");
         }
-        console.log(res.data);
-        console.log(`${res.data.user} has logged in`)
+        // console.log(res.data);
+        // console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
     }

@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/homeimprovement", {
 let homeSeed = [
         {
             roomName: "Kitchen", 
-            image: "../public/assets/images/kitchen1.jpg",
+            image: "./assets/images/kitchen1.jpg",
             tasks: [
                 {
                     taskName: "Refinish cabinets",                    cost: 500
@@ -26,7 +26,7 @@ let homeSeed = [
         },
         {
             roomName: "Bathroom", 
-            image: "../public/assets/images/bathroom1.jpg", 
+            image: "./assets/images/bathroom1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -41,7 +41,7 @@ let homeSeed = [
         },
         {
             roomName: "Bedroom", 
-            image: "../public/assets/images/bedroom2.jpg", 
+            image: "./assets/images/bedroom2.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -56,7 +56,7 @@ let homeSeed = [
         },
         {
             roomName: "Laundry Room", 
-            image: "../public/assets/images/laundryroom1.jpg", 
+            image: "./assets/images/laundryroom1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -71,7 +71,7 @@ let homeSeed = [
         },
         {
             roomName: "Living Room", 
-            image: "../public/assets/images/livingroom1.jpg", 
+            image: "./assets/images/livingroom1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -86,7 +86,7 @@ let homeSeed = [
         },
         {
             roomName: "Garage", 
-            image: "../public/assets/images/garage1.jpg", 
+            image: "./assets/images/garage1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -101,7 +101,7 @@ let homeSeed = [
         },
         {
             roomName: "Exterior", 
-            image: "../public/assets/images/exterior1.jpg", 
+            image: "./assets/images/exterior1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -116,7 +116,7 @@ let homeSeed = [
         },
         {
             roomName: "Backyard", 
-            image: "../public/assets/images/yard1.jpg", 
+            image: "./assets/images/yard1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -131,7 +131,7 @@ let homeSeed = [
         },
         {
             roomName: "Pool", 
-            image: "../public/assets/images/pool1.jpg", 
+            image: "./assets/images/pool1.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,
@@ -146,7 +146,7 @@ let homeSeed = [
         },
         {
             roomName: "Basement", 
-            image: "../public/assets/images/hvac.jpg", 
+            image: "./assets/images/hvac.jpg", 
             tasks: [
                 {
                     taskName: "Refinish bathtub",                    cost: 500,

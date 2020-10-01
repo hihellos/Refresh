@@ -23,14 +23,14 @@ const RoomModal = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{props.value.room}</Button>
+      <Button color="danger" onClick={toggle}>{props.value.roomName}</Button>
       <Modal isOpen={modal} toggle={toggle} >
-            <ModalHeader toggle={toggle}>{props.value.room} Checklist</ModalHeader>
+            <ModalHeader toggle={toggle}>{props.value.roomName} Checklist</ModalHeader>
             <ModalBody>
                         <Table>
                         <thead>
                             <tr>
-                            <th>No.</th>
+                            <th>Complete</th>
                             <th>Task</th>
                             </tr>
                         </thead>
