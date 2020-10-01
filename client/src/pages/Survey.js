@@ -40,7 +40,6 @@ function Survey(props) {
         const value = target.name;
         const presetChoice = preset.filter(e => e.roomName === value); // check preset
         const valueFilter = roomSelected.filter(e => e.roomName === value)
-
         if (valueFilter.length === 0) {
             setRoomSelected([...roomSelected,
                 {
