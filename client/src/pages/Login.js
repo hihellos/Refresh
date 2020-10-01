@@ -8,6 +8,7 @@ import { useAppContext } from '../utils/AppContext';
 import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
 import RoomModal from '../components/Modal'
+import Google from '../components/Google/Google';
 
 
 export default function Login(props) {
@@ -129,25 +130,7 @@ export default function Login(props) {
               color="primary"
               className={classes.submit}>
               onClick={"YourFunctionHere"} */}
-          {/* </Button> */}
-          <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}>
-              {/* onClick={"YourFunctionHere"} */}
-            Login with GitHub
-          </Button>
-          <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}>
-              {/* onClick={"YourFunctionHere"} */}
-            Login with Google
-          </Button>
+            {/* </Button> */}
             <Button
               type="submit"
               fullWidth
@@ -168,6 +151,7 @@ export default function Login(props) {
           </form>
 
             <Facebook/>
+            <Google/>
 
         </div>
       </Grid>
