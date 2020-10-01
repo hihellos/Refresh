@@ -26,5 +26,6 @@
   .pageBreak {
     text-align: center;
     margin: 10px;
-    width: 1000px;
+    padding: 10px;
+    /* width: 1000px; */
   }
