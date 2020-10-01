@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Paper} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import Facebook from '../../src/components/Facebook/Facebook';
+// import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
 import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
 import RoomModal from '../components/Modal'
-import Google from '../components/Google/Google';
+// import Google from '../components/Google/Google';
 
 
 export default function Login(props) {
@@ -150,8 +150,8 @@ export default function Login(props) {
             </Grid>
           </form>
 
-            <Facebook/>
-            <Google/>
+            {/* <Facebook/>
+            <Google/> */}
 
         </div>
       </Grid>

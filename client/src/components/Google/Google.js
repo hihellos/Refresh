@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import GoogleLogin from 'react-google-login';
  
 
@@ -26,9 +26,9 @@ export default class Google extends Component {
     render() {
         let googleContent;
 
-        if(this.state.isLoggedIn) {
-            googleContent = null;
-        } else {
+        // if(this.state.isLoggedIn) {
+        //     googleContent = null;
+        // } else {
             googleContent = (
                 <GoogleLogin
                 clientId="29233619309-1qipdmn7a2b65bgvpo5fllafi823m14e.apps.googleusercontent.com"
@@ -38,7 +38,7 @@ export default class Google extends Component {
                 cookiePolicy={'single_host_origin'}
                 />
             )
-        }
+        // }
     // document.getElementById('googleButton')
 
         return (
