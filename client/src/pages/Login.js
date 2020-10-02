@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Paper} from '@material-ui/core';
+import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Paper } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 // import Facebook from '../../src/components/Facebook/Facebook';
@@ -13,12 +14,18 @@ import { useUserContext } from "../utils/UserContext";
 export default function Login(props) {
   const { setUserId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
+  const [error, setError] = useState(
+    {
+      email: "",
+      password: ""
+    }
+  );
   const [user, setUser] = useState(
     {
       email: "",
       password: ""
     }
-  )
+  );
 
   const handleInputChange = e => {
     const name = e.target.name;
@@ -29,22 +36,34 @@ export default function Login(props) {
   const handleLogInRequest = e => {
     e.preventDefault();
     console.log('user submitted');
-    if (user.email && user.password) {
+    // if (user.email && user.password) {
       API.getUser({
         email: user.email,
         password: user.password
       })
-      .then(res => {
-        if (res.status === 200) {
+      .then(async res => {
+        console.log(res);
+        if (res.data.user !== undefined) {
           userHasAuthenticated(true);
           setUserId(res.data.user);
           props.history.push("/home");
+        } else {
+          if (res.data.errors.email !== "") {
+            setError({...error, email: res.data.errors.email});
+            await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+            setError({...error, email: ""});
+          } 
+          if (res.data.errors.password !== "") {
+            setError({...error, password: res.data.errors.password});
+            await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+            setError({...error, password: ""});
+          }
         }
         // console.log(res.data);
         // console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
-    }
+    // }
   }
 
   const useStyles = makeStyles((theme) => ({
@@ -113,6 +132,9 @@ export default function Login(props) {
               autoFocus
               onChange={handleInputChange}
             />
+            {(error.email !== "") ? (<Alert severity="error">
+              {error.email}
+            </Alert>) : (<div></div>)}
             <TextField
               variant="outlined"
               margin="normal"
@@ -125,6 +147,9 @@ export default function Login(props) {
               autoComplete="current-password"
               onChange={handleInputChange}
             />
+            {(error.password !== "") ? (<Alert severity="error">
+              {error.password}
+            </Alert>) : (<div></div>)}
             {/* <Button
               type="submit"
               fullWidth
