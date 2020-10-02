@@ -76,7 +76,7 @@ export default function SignUp(props) {
         console.log(res);
         if (res.statusText === "Created") {
           userHasAuthenticated(true);
-          setUserId(res.data);
+          setUserId(res.data.user);
           props.history.push("/survey");
         } else {
           userHasAuthenticated(false);

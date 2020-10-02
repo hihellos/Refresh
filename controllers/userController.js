@@ -17,7 +17,7 @@ module.exports = {
     db.User
       .findById(req.params.id)
       .then(dbModel => {
-        console.log('is this null',dbModel);
+        // console.log('is this null',dbModel);
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));
