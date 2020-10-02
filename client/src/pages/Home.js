@@ -22,9 +22,8 @@ export default function Home(props) {
   function loadCards() {
     API.getAllRooms(userId)
       .then((res) => {
-        if (res !== null) {
-          console.log(res);
-          setCards(res);        
+        if (res.data !== null) {
+          setCards(res.data);        
         }
       })
       .catch((err) => console.log(err));
@@ -64,11 +63,8 @@ export default function Home(props) {
                 backgroundPosition: 'center'
             }}>
               <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              {/* <Button className="roomBtn"> */}
                 <RoomModal value={card}>
-                {/* {card.roomName} */}
                 </RoomModal>
-              {/* </Button> */}
             </Card>
           ))}
         </Wrapper>
