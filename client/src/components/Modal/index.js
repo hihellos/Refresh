@@ -1,25 +1,38 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Table } from 'reactstrap';
+import API from '../../utils/API';
 
 const RoomModal = (props) => {
-//   const {
-//     buttonLabel,
-//     className
-//   } = props;
-
   const [modal, setModal] = useState(false);
   const [nestedModal, setNestedModal] = useState(false);
   const [closeAll, setCloseAll] = useState(false);
+  const [task, setNewTask] = useState({});
 
   const toggle = () => setModal(!modal);
   const toggleNested = () => {
     setNestedModal(!nestedModal);
     setCloseAll(false);
   }
-//   const toggleAll = () => {
-//     setNestedModal(!nestedModal);
-//     setCloseAll(true);
-//   }
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setNewTask({[name]: value});
+  };
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log("props: ", props.value._id);
+    console.log("task: ", task);
+
+    API.addTask(props.value._id, task)
+    .then(res => {
+      console.log("result: ", res);
+    })
+    .catch(res => {
+      console.log("error ", res);
+    })
+  };
+
 
   return (
     <div>

@@ -39,6 +39,16 @@ export default {
         .then(res => {
             console.log(res);
         })
+    },
+
+    addTask: function(id, data) {
+        return axios.put("/api/home/tasks/" + id, data)
+        .then(res => {
+            console.log("result: ", res);
+        })
+        .catch(res => {
+            console.log("error ", res);
+        })
     }
 
 };
