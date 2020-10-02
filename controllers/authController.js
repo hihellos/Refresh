@@ -82,7 +82,6 @@ module.exports = {
         try {
         res.cookie('jwt',  '', { maxAge: 1 });
         res.status(200).json('Cookie reset');
-        // console.log('----------------\n',res);
         }
         catch (err) {
             res.json(err);
@@ -93,11 +92,14 @@ module.exports = {
         try {
             let token = req.cookies.jwt;
             if (token) {
-                // console.log("token exist")
-                // console.log('jwtGet:\n',token);
-                res.json("Token Exist");
+                jwt.verify(token, 'home secret code', (err, decodeToken) => {
+                    if (err) {
+                        res.json(err)
+                    } else {
+                        res.json(decodeToken)
+                    }
+                })
             } else {
-                // console.log("token does not exist");
                 res.json("No Token");
             }
         }

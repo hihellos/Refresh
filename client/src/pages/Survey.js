@@ -17,7 +17,6 @@ function Survey(props) {
     const renderRooms = () => {
         API.getSeededRooms()
         .then(res => {
-            // console.log(res);
             setPreset(res.data);
         })
         .catch(err => console.log(err));
@@ -58,12 +57,14 @@ function Survey(props) {
 
     const handleSubmitRequest = (e) => {
         e.preventDefault();
-        console.log('hanldeSubmitRequest', roomSelected);
         API.saveUserRooms(userId, roomSelected)
-        .then(res => {
-            console.log('handleSubmitRequest API return', res)
-        })
+        .then(res => console.log('handleSubmitRequest API return', res))
+        .then(routeChange())
         .catch(err => console.log(err));
+    }
+
+    const routeChange = (e) => {
+        props.history.push("/home");
     }
 
     return(
