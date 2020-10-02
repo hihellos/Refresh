@@ -9,15 +9,12 @@ function createData(time, amount) {
 }
 
 const data = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
+  createData("May '20", 28),
+  createData("June '20", 45),
+  createData("July '20", 50),
+  createData("Aug '20", 80),
+  createData("Sep '20", 74),
+  createData("Oct '20", undefined),
 ];
 
 export default function Chart() {
@@ -25,7 +22,7 @@ export default function Chart() {
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>6-Month Trend:</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -36,14 +33,15 @@ export default function Chart() {
             left: 24,
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+          <XAxis dataKey="time" stroke={theme.palette.text.secondary}>
+          </XAxis>
           <YAxis stroke={theme.palette.text.secondary}>
             <Label
               angle={270}
               position="left"
               style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
             >
-              Sales ($)
+              Home Value
             </Label>
           </YAxis>
           <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
