@@ -60,9 +60,11 @@ export default function Home(props) {
                 backgroundImage: `url(${card.image})`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'center',
+                height: '201px',
+                maxWidth: '300px'
             }}>
-              <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
+              <CardTitle></CardTitle>
                 <RoomModal value={card}>
                 </RoomModal>
             </Card>
@@ -91,10 +93,10 @@ export default function Home(props) {
                 backgroundImage: `url(./assets/images/newHome1.jpg)`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'center',
+                height: '201px',
+                maxWidth: '300px'
             }}>
-              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              
                 <Link to="/survey">
                   <Button className="roomBtn">New floorplan? Retake the survey here</Button>
                 </Link>
@@ -105,10 +107,11 @@ export default function Home(props) {
                 backgroundImage: `url(./assets/images/homeValue.jpg)`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}>
-              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              
+                backgroundPosition: 'center',
+                height: '201px',
+                maxWidth: '300px'
+          
+            }}>              
                 <Link to="/value">
                   <Button className="roomBtn">Visit your home calculator</Button>
                 </Link>
