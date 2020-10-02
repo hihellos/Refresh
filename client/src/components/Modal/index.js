@@ -34,14 +34,14 @@ const RoomModal = (props) => {
                             <th>Task</th>
                             </tr>
                         </thead>
-                        {/* <tbody>
-                            {props.value[0].map((task) => (
+                        <tbody>
+                            {props.value.tasks.map((task) => (
                                 <tr>
                                   <td>{task.isFixed}</td>
                                   <td>{task.taskName}</td>
                                 </tr>
                             ))}
-                        </tbody>  */}
+                        </tbody>  
                         </Table>
                 <br />
             <Button color="success" onClick={toggleNested}>Add Task</Button>
@@ -50,11 +50,11 @@ const RoomModal = (props) => {
                             <ModalBody>
                                 <FormGroup>
                                     <Label for="exampleText">Text Area</Label>
-                                    <Input type="textarea" name="text" id="newTask" />
+                                    <Input onChange={handleInputChange} placeholder="New task here..." type="textarea" name="text" id="newTask" />
                                 </FormGroup>
                             </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={toggleNested}>Save</Button>{' '}
+                            <Button color="primary" onClick={handleFormSubmit}>Save</Button>{' '}
                             <Button color="secondary" onClick={toggleNested}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

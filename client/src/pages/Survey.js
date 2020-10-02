@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
 import { Card, Button, CardBody, CardHeader, Form, FormGroup, Label, CustomInput} from "reactstrap";
-import "./Home.css";
+import "./Survey.css";
 import { useUserContext } from "../utils/UserContext";
 
 function Survey(props) {
@@ -74,7 +74,7 @@ function Survey(props) {
     }
 
     return(
-        <>
+        <center>
         <Navbar logout={() => handleLogOutRequest()} />
         <Card>
             <CardHeader><h2>Select the rooms in your home floor plan:</h2></CardHeader>
@@ -105,7 +105,7 @@ function Survey(props) {
                 </Form>
             </CardBody>
         </Card>
-        </>
+        </center>
     );
 }
 
