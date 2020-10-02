@@ -57,6 +57,22 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
+  addTask: function (req, res) {
+    console.log("req.body ", req.body);
+    db.Home.updateOne(
+      { _id: req.params.id }, //where
+      { $push: { tasks: {taskName: req.body} }} //what
+    )
+    .then(res => {
+      console.log("result: ", res)
+      res.json(res)
+    })
+    .catch(res => {
+      console.log("error ", res)
+      res.json(res)
+    })
+  },
+
   // update: function(req, res) {
   //   db.Home
   //     .findOneAndUpdate({ _id: req.params.id }, req.body)
