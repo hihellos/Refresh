@@ -17,7 +17,6 @@ function Survey(props) {
     const renderRooms = () => {
         API.getSeededRooms()
         .then(res => {
-            // console.log(res);
             setPreset(res.data);
         })
         .catch(err => console.log(err));

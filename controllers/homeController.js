@@ -12,7 +12,7 @@ module.exports = {
   // db.users.findOneAndUpdate({_id: ObjectId("5f7612db740410124c9c6058")}, { $push: {rooms:"5f7614f49a08314b0c4e6ccd"}})
 
   saveUserRooms: function (req, res) {
-    db.User.update({ _id: req.params.id }, { $set: { rooms: [] } })
+    db.User.updateOne({ _id: req.params.id }, { $set: { rooms: [] } })
       .then((res) => {
         db.Home.create(req.body)
           .then((res) => {

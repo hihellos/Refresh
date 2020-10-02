@@ -14,7 +14,6 @@ import { UserContext } from './utils/UserContext';
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [userId, setUserId] = useState("");
-  // const [isAuthenticating, setIsAuthenticating] = useState(true);
 
   useEffect(() => {
     onLoad();
@@ -23,9 +22,10 @@ function App() {
   function onLoad() {
     API.getJwt()
     .then(res => {
-      if (res.data === "Token Exist") {
-        // console.log(res);
+      console.log(res);
+      if (res.data !== "No Token") {
         userHasAuthenticated(true);
+        setUserId(res.data.id);
       } else {
         userHasAuthenticated(false);
       }
