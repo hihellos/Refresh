@@ -22,7 +22,7 @@ function App() {
   function onLoad() {
     API.getJwt()
     .then(res => {
-      console.log(res);
+      // console.log(res);
       if (res.data !== "No Token") {
         userHasAuthenticated(true);
         setUserId(res.data.id);

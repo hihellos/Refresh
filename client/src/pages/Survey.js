@@ -55,12 +55,18 @@ function Survey(props) {
         }
     }
 
-    const handleSubmitRequest = (e) => {
+    const handleSubmitRequest = async (e) => {
+        try {
         e.preventDefault();
-        API.saveUserRooms(userId, roomSelected)
-        .then(res => console.log('handleSubmitRequest API return', res))
-        .then(routeChange())
-        .catch(err => console.log(err));
+        API.saveUserRooms(userId, roomSelected);
+        await new Promise((resolve, reject) => setTimeout(resolve, 800));
+        routeChange();
+        } catch (err) {
+            console.log('error', err)
+        }
+        // .then(res => console.log('handleSubmitRequest API return', res))
+        // .then(routeChange())
+        // .catch(err => console.log(err));
     }
 
     const routeChange = (e) => {
