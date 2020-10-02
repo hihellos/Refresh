@@ -33,6 +33,19 @@ const RoomModal = (props) => {
     })
   };
 
+  function deleteTask(taskId) {
+    const roomId = props.value._id;
+    console.log("roomId, taskId", roomId, taskId)
+    API.deleteTask(roomId, taskId)
+    .then(res => {
+      console.log("result: ", res);
+    })
+  .catch(res => {
+    console.log("error ", res);
+  })
+};
+
+
 
   return (
     <div>
@@ -45,6 +58,7 @@ const RoomModal = (props) => {
                             <tr>
                             <th>Complete</th>
                             <th>Task</th>
+                            <th>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +66,7 @@ const RoomModal = (props) => {
                                 <tr>
                                   <td>{task.isFixed}</td>
                                   <td>{task.taskName}</td>
+                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>X</td>
                                 </tr>
                             ))}
                         </tbody>  
@@ -68,7 +83,7 @@ const RoomModal = (props) => {
                             </ModalBody>
                         <ModalFooter>
                             <Button color="primary" onClick={handleFormSubmit}>Save</Button>{' '}
-                            <Button color="secondary" onClick={toggleNested}>Cancel</Button>
+                            <Button color="secondary" onClick={toggleNested}>Close</Button>
                         </ModalFooter>
                     </Modal>
             </ModalBody>

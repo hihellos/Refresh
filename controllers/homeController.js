@@ -33,35 +33,26 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
-  // make: function(req, res) {
+  // create: function (req, res) {
   //   db.Home.create(req.body)
-  //     // .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
-  //     .then(dbHome => {
+  //     .then(({ _id }) =>
+  //       db.User.findOneAndUpdate(
+  //         { _id: req.params.id },
+  //         { $push: { rooms: _id } },
+  //         { new: true }
+  //       )
+  //     )
+  //     .then((dbHome) => {
   //       res.json(dbHome);
   //     })
-  //     .catch(err => res.status(422).json(err));
+  //     .catch((err) => res.status(422).json(err));
   // },
 
-  create: function (req, res) {
-    db.Home.create(req.body)
-      .then(({ _id }) =>
-        db.User.findOneAndUpdate(
-          { _id: req.params.id },
-          { $push: { rooms: _id } },
-          { new: true }
-        )
-      )
-      .then((dbHome) => {
-        res.json(dbHome);
-      })
-      .catch((err) => res.status(422).json(err));
-  },
-
   addTask: function (req, res) {
-    console.log("req.body ", req.body);
+    console.log("req.body ", req.body.text);
     db.Home.updateOne(
       { _id: req.params.id }, //where
-      { $push: { tasks: {taskName: req.body} }} //what
+      { $push: { tasks: {taskName: req.body.text} }} //what
     )
     .then(res => {
       console.log("result: ", res)
@@ -73,18 +64,21 @@ module.exports = {
     })
   },
 
-  // update: function(req, res) {
-  //   db.Home
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-
-  // remove: function(req, res) {
-  //   db.Home
-  //     .findById({ _id: req.params.id })
-  //     .then(dbModel => dbModel.remove())
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  deleteTask: function(req, res) {
+    console.log("req.params.id", req.params.id)
+    console.log("req.body", req.body)
+    db.Home.updateOne(
+      { _id: req.params.id }, //where
+      { $pull: {tasks: {taskName: req.body.task}} } //what
+    )
+    .then(res => {
+      console.log("result: ", res)
+      // res.json(res)
+    })
+    .catch(res => {
+      console.log("error ", res)
+      // res.json(res)
+    })
+  }
+  
 };
