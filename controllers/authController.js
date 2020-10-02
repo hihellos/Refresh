@@ -82,7 +82,6 @@ module.exports = {
         try {
         res.cookie('jwt',  '', { maxAge: 1 });
         res.status(200).json('Cookie reset');
-        // console.log('----------------\n',res);
         }
         catch (err) {
             res.json(err);

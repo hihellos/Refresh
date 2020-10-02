@@ -1,32 +1,38 @@
 const db = require("../models");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 module.exports = {
-  
-  findSeededRooms: function(req, res) {
-    db.Preset
-      .find({})
+  findSeededRooms: function (req, res) {
+    db.Preset.find({})
       // .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
   },
 
   // db.users.findOneAndUpdate({_id: ObjectId("5f7612db740410124c9c6058")}, { $push: {rooms:"5f7614f49a08314b0c4e6ccd"}})
 
-  saveUserRooms: function(req, res) {
-    db.Home.create(req.body)
+  saveUserRooms: function (req, res) {
+    db.User.update({ _id: req.params.id }, { $set: { rooms: [] } })
       .then((res) => {
-        res.map(e => {
-          db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: e._id } }, { new: true })
-          .then(res => console.log('response message',res))
-          .catch(err => console.log('error message',err));
-        });
+        db.Home.create(req.body)
+          .then((res) => {
+            res.map((e) => {
+              db.User.findOneAndUpdate(
+                { _id: req.params.id },
+                { $push: { rooms: e._id } },
+                { new: true }
+              )
+                .then((res) => console.log("Successfully Updated"))
+                .catch((err) => console.log("Error Message", err));
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   },
-  
+
   // make: function(req, res) {
   //   db.Home.create(req.body)
   //     // .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
@@ -35,14 +41,20 @@ module.exports = {
   //     })
   //     .catch(err => res.status(422).json(err));
   // },
-  
-  create: function(req, res) {
+
+  create: function (req, res) {
     db.Home.create(req.body)
-      .then(({_id}) => db.User.findOneAndUpdate({ _id: req.params.id}, { $push: { rooms: _id } }, { new: true }))
-      .then(dbHome => {
+      .then(({ _id }) =>
+        db.User.findOneAndUpdate(
+          { _id: req.params.id },
+          { $push: { rooms: _id } },
+          { new: true }
+        )
+      )
+      .then((dbHome) => {
         res.json(dbHome);
       })
-      .catch(err => res.status(422).json(err));
+      .catch((err) => res.status(422).json(err));
   },
 
   // update: function(req, res) {
@@ -51,7 +63,7 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
-  
+
   // remove: function(req, res) {
   //   db.Home
   //     .findById({ _id: req.params.id })
@@ -59,5 +71,4 @@ module.exports = {
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // }
-
 };
