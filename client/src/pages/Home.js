@@ -63,12 +63,8 @@ export default function Home(props) {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
-              <CardTitle><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br></CardTitle>
-              {/* <Button className="roomBtn"> */}
-                <RoomModal value={card}>
-                {/* {card.roomName} */}
-                </RoomModal>
-              {/* </Button> */}
+              <CardTitle><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br></CardTitle>
+              <RoomModal value={card}></RoomModal>
             </Card>
           ))}
         </Wrapper>
