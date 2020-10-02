@@ -88,7 +88,7 @@ export default function Home(props) {
       <Wrapper>
        <Card body inverse className="lastCard"
               style={{ 
-                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundImage: `url(./assets/images/newHome1.jpg)`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
