@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
+import { Alert } from '@material-ui/lab';
 
 // import { PromiseProvider } from 'mongoose';
 
@@ -47,6 +48,14 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp(props) {
   const { setUserId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
+  const [error, setError] = useState(
+    {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    }
+  )
   const [user, setUser] = useState(
     {
       firstName: "",
@@ -65,26 +74,59 @@ export default function SignUp(props) {
   const handleFormSubmit = e => {
     e.preventDefault();
     console.log('user submitted');
-    if (user.email && user.password && user.firstName && user.lastName) {
-      const userFullname = `${user.firstName} ${user.lastName}`;
-      API.saveUser({
-        name: userFullname,
-        email: user.email,
-        password: user.password
-      })
-      .then(res => {
-        console.log(res);
-        if (res.statusText === "Created") {
-          userHasAuthenticated(true);
-          setUserId(res.data.user);
-          props.history.push("/survey");
-        } else {
-          userHasAuthenticated(false);
-          props.history.push("/");
-        }
-      })
-      .catch(err => console.log(err));
-    }
+    // if (user.email !== "") {
+    //   setError(
+    //     {
+    //       ...error,
+    //       email: "Email is required."
+    //     }
+    //   )
+    // } else if (user.password !== "") {
+    //   setError(
+    //     {
+    //       ...error,
+    //       password: "Password is required."
+    //     }
+    //   )
+    // } else if (user.)
+    const userFullname = `${user.firstName} ${user.lastName}`;
+    API.saveUser({
+      name: userFullname,
+      email: user.email,
+      password: user.password
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+
+
+
+
+
+    // if (user.email && user.password && user.firstName && user.lastName) {
+    //   const userFullname = `${user.firstName} ${user.lastName}`;
+    //   API.saveUser({
+    //     name: userFullname,
+    //     email: user.email,
+    //     password: user.password
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //     if (res.statusText === "Created") {
+    //       userHasAuthenticated(true);
+    //       setUserId(res.data.user);
+    //       props.history.push("/survey");
+    //     } else {
+    //       userHasAuthenticated(false);
+    //       props.history.push("/");
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
+    // }
   }
 
   const classes = useStyles();
@@ -118,6 +160,9 @@ export default function SignUp(props) {
                 autoFocus
                 onChange={handleInputChange}
               />
+              {(error.email !== "") ? (<Alert severity="error">
+              {error.email}
+            </Alert>) : (<div></div>)}
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField

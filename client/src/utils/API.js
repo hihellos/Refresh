@@ -2,11 +2,23 @@ import axios from 'axios';
 
 export default {
     saveUser: function(userdata) {
-        return axios.post("/signup", userdata);
+        return axios.post("/signup", userdata)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        })
     },
     
     getUser: function(userdata) {
         return axios.post("/login", userdata)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        });
     },
 
     outUser: function() {
