@@ -49,6 +49,17 @@ export default {
         .catch(res => {
             console.log("error ", res);
         })
+    },
+
+    deleteTask: function(roomId, taskId) {
+        console.log("API roomId, taskId", roomId, taskId)
+        return axios.delete("/api/home/tasks/" + roomId, taskId)
+        .then(res => {
+            console.log("result: ", res);
+        })
+        .catch(res => {
+            console.log("error ", res);
+        })
     }
 
 };
