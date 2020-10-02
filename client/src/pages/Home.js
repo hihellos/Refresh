@@ -49,7 +49,7 @@ export default function Home(props) {
       <Navbar logout={handleLogOutRequest} />
       <div className="row">
         <div className="col-md-12 pageBreak">
-           <h3 >Refresh Your Home</h3>
+         <span className="header">Refresh</span>
         </div >
       </div>
       {cards.length ? (
@@ -73,7 +73,7 @@ export default function Home(props) {
         <div className="row">
         <div className="col-md-12 pageBreak">
           <h3>What a gorgeous empty lot!</h3>
-            <Button>
+            <Button class="roomBtn">
               <Link to="/survey">Click me to add rooms!</Link>
             </Button>
          </div>
@@ -102,7 +102,7 @@ export default function Home(props) {
         </Card> 
         <Card body inverse className="lastCard"
               style={{ 
-                backgroundImage: `url(./assets/images/newHome.png)`, 
+                backgroundImage: `url(./assets/images/homeValue.jpg)`, 
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'

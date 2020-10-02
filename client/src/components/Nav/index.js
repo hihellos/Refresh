@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import "./style.css";
 
@@ -11,23 +11,21 @@ const NewNav = (props) => {
   return (
     <div>
       <Navbar className="navStyle" light expand="md">
-        <NavbarBrand className="title">
-          <Link to="/home">
-            <span className="rStyle">R</span><span className="title">efreshed</span> 
-          </Link> 
+        <NavbarBrand> 
+          <span className="title">Refresh<img src="./assets/images/logo100x100.png" height="36px" width="36px" /></span>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/home">Home</Link>
+             <Button color="white"> <Link to="/home" class="navLink">Home</Link></Button>
             </NavItem>
             <NavItem>
-              <Link to="/value">Value</Link>
+              <Button color="white"><Link to="/value" class="navLink">Value</Link></Button>
             </NavItem>
-            <NavItem onClick={props.logout}>
-              Logout
-            </NavItem>
+           <Button color="white"> <NavItem onClick={props.logout} >
+             <span class="navLink">Logout</span>
+            </NavItem></Button>
           </Nav>
         </Collapse>
       </Navbar>
