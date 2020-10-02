@@ -13,8 +13,8 @@ router.route("/rooms/:id")
   .post(homeController.saveUserRooms);
 
 // match /api/home/:id
-router.route("/:id")
-  .post(homeController.create);
+router.route("/tasks/:id")
+  .put(homeController.addTask);
 
 module.exports = router;
 
