@@ -77,7 +77,7 @@ function Survey(props) {
         <center>
         <Navbar logout={() => handleLogOutRequest()} />
         <Card>
-            <CardHeader><h2>Select the rooms in your home floor plan:</h2></CardHeader>
+            <CardHeader className="surveyTitle">Select the rooms in your home floor plan:</CardHeader>
             <CardBody>
                 <Form>
                     <FormGroup>
@@ -96,8 +96,8 @@ function Survey(props) {
                             </div>
                     </FormGroup>
                     <Button 
-                    className="" 
-                    size="lg" 
+                    className="surveyBtn" 
+                    size="sm" 
                     block
                     onClick={handleSubmitRequest}
                     >Take me Home!
@@ -105,6 +105,7 @@ function Survey(props) {
                 </Form>
             </CardBody>
         </Card>
+        <img src="./assets/images/logo100x100.png" />
         </center>
     );
 }
