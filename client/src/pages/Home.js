@@ -17,7 +17,7 @@ export default function Home(props) {
   
   useEffect(() => {
     loadCards();
-  }, []); 
+  }); 
 
   function loadCards() {
     API.getAllRooms(userId)
@@ -33,8 +33,8 @@ export default function Home(props) {
     console.log("User trying to log out");
     API.outUser()
       .then((res) => {
-        console.log(props);
-        console.log(res);
+        // console.log(props);
+        // console.log(res);
         if (res.status === 200) {
           userHasAuthenticated(false);
           props.history.push("/");
