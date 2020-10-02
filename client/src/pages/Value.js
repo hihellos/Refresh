@@ -11,6 +11,7 @@ import Chart from '../components/Chart';
 import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
 import NewNav from '../components/Nav';
+import "./Value.css";
 
 function Copyright() {
   return (

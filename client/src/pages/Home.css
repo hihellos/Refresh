@@ -8,23 +8,23 @@
 .card {
     background: #fff;
     border-radius: 2px;
-    height: 325px;
+    height: 201px;
     margin: 1rem;
     position: relative;
-    width: 325px;
+    width: 300px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     text-align: left;
   }
   
   .card > .img-container {
-    height: 60%;
+    height: 201px;
+    width: 300px;
     overflow: hidden;
     text-align: center;
-    background:#6CADDC;
+    background:#FFFFFF;
   }
 
   .roomBtn {
-    margin-bottom: -50;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     color: #ffb000;
