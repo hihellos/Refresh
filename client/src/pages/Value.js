@@ -53,6 +53,7 @@ export default function Dashboard() {
   return (
     <> 
     <NewNav/>
+    <div className="wrapper">
     <div className={classes.root}>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -82,6 +83,7 @@ export default function Dashboard() {
           </Box>
         </Container>
       </main>
+    </div>
     </div>
     </>
   );
