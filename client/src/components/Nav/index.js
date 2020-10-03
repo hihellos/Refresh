@@ -23,9 +23,9 @@ const NewNav = (props) => {
             <NavItem>
               <Button color="white"><Link to="/value" className="navLink">Value</Link></Button>
             </NavItem>
-           <Button color="white"> <NavItem onClick={props.logout} >
-             <span className="navLink">Logout</span>
-            </NavItem></Button>
+            <NavItem>
+              <Button color="white" onClick={props.logout}><span className="navLink">Logout</span></Button>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
