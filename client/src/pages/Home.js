@@ -75,9 +75,9 @@ export default function Home(props) {
         <div className="row">
         <div className="col-md-12 pageBreak">
           <h3>What a gorgeous empty lot!</h3>
-            <Button class="roomBtn">
-              <Link to="/survey">Click me to add rooms!</Link>
-            </Button>
+            <Link to="/survey">
+              <Button className="roomBtn">Click me to add rooms!</Button>
+            </Link>
          </div>
          </div>
         </>
@@ -87,6 +87,7 @@ export default function Home(props) {
         </div >
       </div>
       <Wrapper>
+      <img src="https://imgp.whaleshares.io/pimgp/a/adsactly/p/adsactly-game-review-unravel/0x0/https://steemitimages.com/DQmbcdMJV1UbtTxgv6ocTG4vrZ6inX89rJSBywwNQPikmzR/Line%20Break.png" alt="Line Break.png" style={{opacity:'5%'}}/>
        <Card body inverse className="lastCard"
               style={{ 
                 backgroundImage: `url(./assets/images/newHome1.jpg)`, 
@@ -107,12 +108,12 @@ export default function Home(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '260px',
-                maxWidth: '385px'
+                height: '201px',
+                maxWidth: '300px'
           
             }}>              
                 <Link to="/value">
-                  <Button style={{backgroundColor:"#FF6F5B", borderColor: "#FF6F5B"}}>Visit your home calculator</Button>
+                  <Button className="roomBtn">Visit your home calculator</Button>
                 </Link>
           </Card>   
         </Wrapper> 
