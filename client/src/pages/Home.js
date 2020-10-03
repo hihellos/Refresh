@@ -87,6 +87,7 @@ export default function Home(props) {
         </div >
       </div>
       <Wrapper>
+      <img src="https://imgp.whaleshares.io/pimgp/a/adsactly/p/adsactly-game-review-unravel/0x0/https://steemitimages.com/DQmbcdMJV1UbtTxgv6ocTG4vrZ6inX89rJSBywwNQPikmzR/Line%20Break.png" alt="Line Break.png" style={{opacity:'5%'}}/>
        <Card body inverse className="lastCard"
               style={{ 
                 backgroundImage: `url(./assets/images/newHome1.jpg)`, 
