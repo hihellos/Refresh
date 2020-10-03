@@ -3,10 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from '../Title';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
 // const timeElapsed = Date.now();
 const today = new Date();
 
@@ -25,9 +21,7 @@ export default function Deposits() {
         74
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        <div>
         {today.toDateString()}
-        </div>
       </Typography>
       <div>
        

@@ -67,16 +67,17 @@ const RoomModal = (props) => {
     })
   }
 
+
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{props.value.roomName}</Button>
+      <Button style={{backgroundColor:"#ff6f5b", borderColor:"#ff6f5b"}} onClick={toggle}>{props.value.roomName}</Button>
       <Modal isOpen={modal} toggle={toggle} >
             <ModalHeader toggle={toggle}>{props.value.roomName} Checklist</ModalHeader>
             <ModalBody>
                         <Table>
                         <thead>
                             <tr>
-                            <th>Incompleted Tasks</th>
+                            <th>Incomplete</th>
                             <th>Mark as Complete?</th>
                             <th>Remove</th>
                             </tr>
@@ -94,7 +95,11 @@ const RoomModal = (props) => {
                         <Table>
                         <thead>
                             <tr>
-                            <th>Completed Tasks</th>
+                            <th>Completed</th>
+                            <tr style={{textAlign:'center'}}>
+                            <th>Complete</th>
+                            <th>Task</th>
+
                             <th>Remove</th>
                             </tr>
                         </thead>
@@ -102,7 +107,7 @@ const RoomModal = (props) => {
                             {props.value.tasks.filter(t => t.isFixed === true).map((task) => (
                                 <tr>
                                   <td>{task.taskName}</td>
-                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                  <td role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
                             ))}
                         </tbody>  
@@ -113,7 +118,6 @@ const RoomModal = (props) => {
                         <ModalHeader>New Task:</ModalHeader>
                             <ModalBody>
                                 <FormGroup>
-                                    <Label for="exampleText">Text Area</Label>
                                     <Input onChange={handleInputChange} placeholder="New task here..." type="textarea" name="text" id="newTask" />
                                 </FormGroup>
                             </ModalBody>

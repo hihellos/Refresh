@@ -105,7 +105,7 @@ function Survey(props) {
                 </Form>
             </CardBody>
         </Card>
-        <img src="./assets/images/logo100x100.png" />
+        <img src="./assets/images/logo100x100.png" alt="refresh app logo"/>
         </center>
     );
 }
