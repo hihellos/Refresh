@@ -48,15 +48,17 @@ const RoomModal = (props) => {
       })
   };
 
+
+
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{props.value.roomName}</Button>
+      <Button style={{backgroundColor:"#ff6f5b", borderColor:"#ff6f5b"}} onClick={toggle}>{props.value.roomName}</Button>
       <Modal isOpen={modal} toggle={toggle} >
             <ModalHeader toggle={toggle}>{props.value.roomName} Checklist</ModalHeader>
             <ModalBody>
                         <Table>
                         <thead>
-                            <tr>
+                            <tr style={{textAlign:'center'}}>
                             <th>Complete</th>
                             <th>Task</th>
                             <th>Remove</th>
@@ -64,10 +66,12 @@ const RoomModal = (props) => {
                         </thead>
                         <tbody>
                             {props.value.tasks.map((task) => (
-                                <tr>
-                                  <td>{task.isFixed}</td>
+                                <tr style={{textAlign:'center'}}>
+                                  <td>
+                                    {(task.isFixed) ? (<Input type="checkbox" checked/>) : (<Input type="checkbox"/>) }
+                                  </td>
                                   <td>{task.taskName}</td>
-                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
                             ))}
                         </tbody>  
@@ -78,7 +82,6 @@ const RoomModal = (props) => {
                         <ModalHeader>New Task:</ModalHeader>
                             <ModalBody>
                                 <FormGroup>
-                                    <Label for="exampleText">Text Area</Label>
                                     <Input onChange={handleInputChange} placeholder="New task here..." type="textarea" name="text" id="newTask" />
                                 </FormGroup>
                             </ModalBody>
