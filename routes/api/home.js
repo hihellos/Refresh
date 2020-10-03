@@ -15,7 +15,7 @@ router.route("/rooms/:id")
 // match /api/home/:id
 router.route("/tasks/:id")
   .put(homeController.addTask)
-  .delete(homeController.deleteTask);
+  .post(homeController.deleteTask);
 
 module.exports = router;
 
