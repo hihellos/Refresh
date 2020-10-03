@@ -71,7 +71,7 @@ const RoomModal = (props) => {
                                     {(task.isFixed) ? (<Input type="checkbox" checked/>) : (<Input type="checkbox"/>) }
                                   </td>
                                   <td>{task.taskName}</td>
-                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>✗</td>
+                                  <td role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
                             ))}
                         </tbody>  
