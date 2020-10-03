@@ -12,11 +12,11 @@ function createData(id, date, name, shipTo, amount) {
 }
 
 const rows = [
-  createData(0, '03 Sep, 2020', 'Attic', 'Task here'),
-  createData(1, '10 Aug, 2020', 'Kitchen', 'Task here'),
-  createData(2, '25 Jun, 2020', 'Exterior', 'Solar Panels'),
-  createData(3, '3 Jun, 2020', 'Pool', 'Task here'),
-  createData(4, '14 May, 2020', 'Bedroom', 'Task here'),
+  createData(0, '03 Sep, 2020', 'Attic', 'Check for leaks and storm damage'),
+  createData(1, '10 Aug, 2020', 'Kitchen', 'Clean out under the stove'),
+  createData(2, '25 Jun, 2020', 'Exterior', 'Added solar panels to roof'),
+  createData(3, '3 Jun, 2020', 'Pool', 'Vaccuum pool, change filters, and cover for winter'),
+  createData(4, '14 May, 2020', 'Bedroom', 'Carpets steam cleaned'),
 ];
 
 export default function Orders() {

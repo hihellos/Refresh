@@ -71,23 +71,23 @@ const RoomModal = (props) => {
   return (
     <div>
       <Button style={{backgroundColor:"#ff6f5b", borderColor:"#ff6f5b"}} onClick={toggle}>{props.value.roomName}</Button>
-      <Modal isOpen={modal} toggle={toggle} >
+      <Modal size={'lg'} isOpen={modal} toggle={toggle} >
             <ModalHeader toggle={toggle}>{props.value.roomName} Checklist</ModalHeader>
             <ModalBody>
                         <Table>
                         <thead>
                             <tr>
-                            <th>Incomplete</th>
-                            <th>Mark as Complete?</th>
-                            <th>Remove</th>
+                            <th>Tasks</th>
+                            <th style={{textAlign:'center'}}>Mark as Complete?</th>
+                            <th style={{textAlign:'center'}}>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
                             {props.value.tasks.filter(t => t.isFixed === false).map((task) => (
                                 <tr >
                                   <td>{task.taskName}</td>
-                                  <td style={{textAlign:'center'}}><i onClick={() => handleIconClick(task._id)} className="far fa-calendar-check"></i></td>
-                                  <td style={{textAlign:'center'}} role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                  <td style={{textAlign:'center'}}><Button onClick={() => handleIconClick(task._id)} color="transparent" size="sm"><i class="far fa-square"></i></Button></td>
+                                  <td style={{textAlign:'center'}} role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
                             ))}
                         </tbody>  
@@ -95,8 +95,8 @@ const RoomModal = (props) => {
                         <Table>
                         <thead>
                             <tr>
-                            <th>Completed</th>
-                            <th style={{textAlign:'center'}}>Remove</th>
+                            <th>Complete</th>
+                            <th style={{textAlign:'center'}}></th>
                             </tr>
                         </thead>
                         <tbody>
