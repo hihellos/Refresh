@@ -12,19 +12,19 @@ const NewNav = (props) => {
     <div>
       <Navbar className="navStyle" light expand="md">
         <NavbarBrand> 
-          <span className="title">Refresh<img src="./assets/images/logo100x100.png" height="34px" width="34px" /></span>
+          <span className="title">Refresh<img src="./assets/images/logo100x100.png" alt="refresh app logo" height="34px" width="34px" /></span>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-             <Button color="white"> <Link to="/home" class="navLink">Home</Link></Button>
+             <Button color="white"> <Link to="/home" className="navLink">Home</Link></Button>
             </NavItem>
             <NavItem>
-              <Button color="white"><Link to="/value" class="navLink">Value</Link></Button>
+              <Button color="white"><Link to="/value" className="navLink">Value</Link></Button>
             </NavItem>
            <Button color="white"> <NavItem onClick={props.logout} >
-             <span class="navLink">Logout</span>
+             <span className="navLink">Logout</span>
             </NavItem></Button>
           </Nav>
         </Collapse>

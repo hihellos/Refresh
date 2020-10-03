@@ -71,42 +71,50 @@ export default function SignUp(props) {
     setUser({...user, [name]: value});
   }
   
-  const handleFormSubmit = e => {
+  const handleFormSubmit = async e => {
     e.preventDefault();
     console.log('user submitted');
-    // if (user.email !== "") {
-    //   setError(
-    //     {
-    //       ...error,
-    //       email: "Email is required."
-    //     }
-    //   )
-    // } else if (user.password !== "") {
-    //   setError(
-    //     {
-    //       ...error,
-    //       password: "Password is required."
-    //     }
-    //   )
-    // } else if (user.)
-    const userFullname = `${user.firstName} ${user.lastName}`;
-    API.saveUser({
-      name: userFullname,
-      email: user.email,
-      password: user.password
-    })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-
-
-
-
-
-
+ 
+    if (user.firstName === "") {
+      setError({...error, firstName: "You need to input your Firstname"});
+      await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+      setError({...error, firstName: ""});
+    } 
+    else if (user.lastName === "") {
+      setError({...error, lastName: "You need to input your Lastname"});
+      await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+      setError({...error, lastName: ""});
+    } 
+    else {
+      const userFullname = `${user.firstName} ${user.lastName}`;
+      API.saveUser({
+        name: userFullname,
+        email: user.email,
+        password: user.password
+      })
+      .then(async res => {
+        if (res.data.user !== undefined) {
+          userHasAuthenticated(true);
+          setUserId(res.data.user);
+          props.history.push("/survey");
+        } else {
+          if (res.data.errors.email !== "") {
+            setError({...error, email: res.data.errors.email});
+            await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+            setError({...error, email: ""});
+          } 
+          if (res.data.errors.password !== "") {
+            setError({...error, password: res.data.errors.password});
+            await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+            setError({...error, password: ""});
+          }
+        }
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
     // if (user.email && user.password && user.firstName && user.lastName) {
     //   const userFullname = `${user.firstName} ${user.lastName}`;
     //   API.saveUser({
@@ -160,9 +168,9 @@ export default function SignUp(props) {
                 autoFocus
                 onChange={handleInputChange}
               />
-              {(error.email !== "") ? (<Alert severity="error">
-              {error.email}
-            </Alert>) : (<div></div>)}
+              {(error.firstName !== "") ? (<Alert severity="error">
+                {error.firstName}
+              </Alert>) : (<div></div>)}
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -175,6 +183,9 @@ export default function SignUp(props) {
                 autoComplete="lname"
                 onChange={handleInputChange}
               />
+              {(error.lastName !== "") ? (<Alert severity="error">
+                {error.lastName}
+                </Alert>) : (<div></div>)}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -187,6 +198,9 @@ export default function SignUp(props) {
                 autoComplete="email"
                 onChange={handleInputChange}
               />
+              {(error.email !== "") ? (<Alert severity="error">
+              {error.email}
+              </Alert>) : (<div></div>)}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -200,6 +214,9 @@ export default function SignUp(props) {
                 autoComplete="current-password"
                 onChange={handleInputChange}
               />
+              {(error.password !== "") ? (<Alert severity="error">
+              {error.password}
+              </Alert>) : (<div></div>)}
             </Grid>
           </Grid>
           <Button

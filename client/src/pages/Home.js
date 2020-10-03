@@ -84,7 +84,6 @@ export default function Home(props) {
       )} 
       <div className="row">
         <div className="col-md-12 pageBreak">
-           <h3 >Extras</h3>
         </div >
       </div>
       <Wrapper>
