@@ -17,5 +17,8 @@ router.route("/tasks/:id")
   .put(homeController.addTask)
   .post(homeController.deleteTask);
 
+router.route("/task/:id")
+  .put(homeController.updateTask);
+  
 module.exports = router;
 

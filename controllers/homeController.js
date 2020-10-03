@@ -79,6 +79,21 @@ module.exports = {
     .catch(res => {
       console.log("error ", res)
     })
+  },
+
+  updateTask: function(req, res) {
+    console.log('everything i get', req.params.id, 'is here', req.body)
+    db.Home.findOneAndUpdate({ 
+      "_id": req.params.id,
+      "tasks._id": req.body.taskId },
+      { $set: { "tasks.$.isFixed": req.body.isFixed }}
+    )
+    .then(res => {
+      console.log('result', res);
+    })
+    .catch(err => {
+      console.log('error', err);
+    })
   }
   
 };
