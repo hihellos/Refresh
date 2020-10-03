@@ -93,11 +93,11 @@ export default function Home(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '201px',
-                maxWidth: '300px'
+                height: '260px',
+                maxWidth: '385px'
             }}>
                 <Link to="/survey">
-                  <Button className="roomBtn">New floorplan? Retake the survey here</Button>
+                  <Button style={{backgroundColor:"#FF6F5B", borderColor: "#FF6F5B"}}>New floorplan? Retake the survey</Button>
                 </Link>
               
         </Card> 
@@ -107,12 +107,12 @@ export default function Home(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '201px',
-                maxWidth: '300px'
+                height: '260px',
+                maxWidth: '385px'
           
             }}>              
                 <Link to="/value">
-                  <Button className="roomBtn">Visit your home calculator</Button>
+                  <Button style={{backgroundColor:"#FF6F5B", borderColor: "#FF6F5B"}}>Visit your home calculator</Button>
                 </Link>
           </Card>   
         </Wrapper> 
