@@ -108,12 +108,12 @@ export default function Home(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '260px',
-                maxWidth: '385px'
+                height: '201px',
+                maxWidth: '300px'
           
             }}>              
                 <Link to="/value">
-                  <Button style={{backgroundColor:"#FF6F5B", borderColor: "#FF6F5B"}}>Visit your home calculator</Button>
+                  <Button className="roomBtn">Visit your home calculator</Button>
                 </Link>
           </Card>   
         </Wrapper> 
