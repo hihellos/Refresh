@@ -64,10 +64,10 @@ const RoomModal = (props) => {
                         </thead>
                         <tbody>
                             {props.value.tasks.map((task) => (
-                                <tr>
+                                <tr key={task._id}>
                                   <td>{task.isFixed}</td>
                                   <td>{task.taskName}</td>
-                                  <td {...props} role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                  <td role="button" onClick={() => deleteTask(task._id)}>X</td>
                                 </tr>
                             ))}
                         </tbody>  
