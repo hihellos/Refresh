@@ -35,17 +35,18 @@ const RoomModal = (props) => {
 
   function deleteTask(taskId) {
     const roomId = props.value._id;
-    console.log("roomId, taskId", roomId, taskId)
-    API.deleteTask(roomId, taskId)
-    .then(res => {
-      console.log("result: ", res);
-    })
-  .catch(res => {
-    console.log("error ", res);
-  })
-};
-
-
+    const taskObj = {
+      id: taskId 
+    }
+    console.log("roomId, taskId", roomId, taskObj)
+    API.deleteTask(roomId, taskObj)
+      .then(res => {
+        console.log("result: ", res);
+      })
+      .catch(res => {
+      console.log("error ", res);
+      })
+  };
 
   return (
     <div>
