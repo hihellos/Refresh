@@ -7,16 +7,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    minHeight: '0vh',
+    backgroundColor: '#ffffff',
   },
   main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(0),
+    backgroundColor: '#ffffff',
   },
   footer: {
     padding: theme.spacing(2, 2),
     marginTop: 'auto',
-    backgroundColor:
+    backgroundColor: 
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
 }));
@@ -30,7 +32,7 @@ export default function StickyFooter() {
       <Container component="main" className={classes.main} maxWidth="sm">
       </Container>
       <footer className={classes.footer}>
-        <Container maxWidth="sm">
+        <Container>
           <Copyright />
         </Container>
       </footer>

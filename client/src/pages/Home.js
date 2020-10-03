@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Footer from '../components/Footer/index';
+import Footer from '../components/Footer/index';
 import API from "../utils/API";
 import Navbar from "../components/Nav/index";
 import { Card, Button, CardTitle} from "reactstrap";
@@ -117,7 +117,7 @@ export default function Home(props) {
                 </Link>
           </Card>   
         </Wrapper> 
-        
+        <Footer/>
     </>
   );
 }
