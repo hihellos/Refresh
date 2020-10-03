@@ -53,7 +53,7 @@ export default function Dashboard() {
   return (
     <> 
     <NewNav/>
-    <div className="wrapper">
+    <div className="wrapper" style={{backgroundColor:'#fafafa'}}>
     <div className={classes.root}>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

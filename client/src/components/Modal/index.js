@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, FormGroup, Table } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, FormGroup, Table } from 'reactstrap';
 import API from '../../utils/API';
 
 const RoomModal = (props) => {
@@ -84,10 +84,10 @@ const RoomModal = (props) => {
                         </thead>
                         <tbody>
                             {props.value.tasks.filter(t => t.isFixed === false).map((task) => (
-                                <tr>
+                                <tr >
                                   <td>{task.taskName}</td>
-                                  <td><i onClick={() => handleIconClick(task._id)} className="far fa-calendar-check"></i></td>
-                                  <td role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                  <td style={{textAlign:'center'}}><i onClick={() => handleIconClick(task._id)} className="far fa-calendar-check"></i></td>
+                                  <td style={{textAlign:'center'}} role="button" onClick={() => deleteTask(task._id)}>X</td>
                                 </tr>
                             ))}
                         </tbody>  
@@ -96,18 +96,14 @@ const RoomModal = (props) => {
                         <thead>
                             <tr>
                             <th>Completed</th>
-                            <tr style={{textAlign:'center'}}>
-                            <th>Complete</th>
-                            <th>Task</th>
-
-                            <th>Remove</th>
+                            <th style={{textAlign:'center'}}>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
                             {props.value.tasks.filter(t => t.isFixed === true).map((task) => (
                                 <tr>
                                   <td>{task.taskName}</td>
-                                  <td role="button" onClick={() => deleteTask(task._id)}>✗</td>
+                                  <td style={{textAlign:'center'}} role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
                             ))}
                         </tbody>  
