@@ -72,6 +72,16 @@ export default {
         .catch(err => {
             console.log('error', err);
         })
+    },
+
+    updateTask: function(room, obj) {
+        return axios.put("/api/home/task/" + room, obj)
+        .then(res => {
+            console.log('result', res);
+        })
+        .catch(err => {
+            console.log('error', err);
+        })
     }
 
 };

@@ -48,6 +48,24 @@ const RoomModal = (props) => {
       })
   };
 
+  function handleIconClick(taskId) {
+    console.log('id',taskId)
+    const roomId = props.value._id;
+    // const trueObj = {
+    //   isFixed: true
+    // }
+    const dataObj = {
+      taskId: taskId,
+      isFixed: true
+    }
+    API.updateTask(roomId, dataObj)
+    .then(res => {
+      console.log("result: ", res);
+    })
+    .catch(res => {
+    console.log("error ", res);
+    })
+  }
 
 
   return (
@@ -58,18 +76,36 @@ const RoomModal = (props) => {
             <ModalBody>
                         <Table>
                         <thead>
-                            <tr style={{textAlign:'center'}}>
-                            <th>Complete</th>
-                            <th>Task</th>
+                            <tr>
+                            <th>Incomplete</th>
+                            <th>Mark as Complete?</th>
                             <th>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {props.value.tasks.map((task) => (
-                                <tr style={{textAlign:'center'}}>
-                                  <td>
-                                    {(task.isFixed) ? (<Input type="checkbox" checked/>) : (<Input type="checkbox"/>) }
-                                  </td>
+                            {props.value.tasks.filter(t => t.isFixed === false).map((task) => (
+                                <tr>
+                                  <td>{task.taskName}</td>
+                                  <td><i onClick={() => handleIconClick(task._id)} className="far fa-calendar-check"></i></td>
+                                  <td role="button" onClick={() => deleteTask(task._id)}>X</td>
+                                </tr>
+                            ))}
+                        </tbody>  
+                        </Table>
+                        <Table>
+                        <thead>
+                            <tr>
+                            <th>Completed</th>
+                            <tr style={{textAlign:'center'}}>
+                            <th>Complete</th>
+                            <th>Task</th>
+
+                            <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {props.value.tasks.filter(t => t.isFixed === true).map((task) => (
+                                <tr>
                                   <td>{task.taskName}</td>
                                   <td role="button" onClick={() => deleteTask(task._id)}>✗</td>
                                 </tr>
