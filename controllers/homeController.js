@@ -65,19 +65,19 @@ module.exports = {
   },
 
   deleteTask: function(req, res) {
-    console.log("req.params.id", req.params.id)
-    console.log("req.body", req.body)
+    console.log("req.params.id", req.params.id);
+    console.log("query", req.query);
+    console.log('body', req.body);
     db.Home.updateOne(
       { _id: req.params.id }, //where
-      { $pull: {tasks: {taskName: req.body.task}} } //what
+      { $pull: {tasks: { _id: req.body.id}} } //what
     )
     .then(res => {
       console.log("result: ", res)
-      // res.json(res)
+
     })
     .catch(res => {
       console.log("error ", res)
-      // res.json(res)
     })
   }
   
