@@ -84,10 +84,10 @@ export default function Home(props) {
       )} 
       <div className="row">
         <div className="col-md-12 pageBreak">
+          {/* <img src="https://imgp.whaleshares.io/pimgp/a/adsactly/p/adsactly-game-review-unravel/0x0/https://steemitimages.com/DQmbcdMJV1UbtTxgv6ocTG4vrZ6inX89rJSBywwNQPikmzR/Line%20Break.png" alt="Line Break.png" style={{opacity:'5%'}}/> */}
         </div >
       </div>
       <Wrapper>
-      <img src="https://imgp.whaleshares.io/pimgp/a/adsactly/p/adsactly-game-review-unravel/0x0/https://steemitimages.com/DQmbcdMJV1UbtTxgv6ocTG4vrZ6inX89rJSBywwNQPikmzR/Line%20Break.png" alt="Line Break.png" style={{opacity:'5%'}}/>
        <Card body inverse className="lastCard"
               style={{ 
                 backgroundImage: `url(./assets/images/newHome1.jpg)`, 
@@ -108,12 +108,12 @@ export default function Home(props) {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '201px',
-                maxWidth: '300px'
+                height: '260px',
+                maxWidth: '385px'
           
             }}>              
                 <Link to="/value">
-                  <Button className="roomBtn">Visit your home calculator</Button>
+                  <Button style={{backgroundColor:"#FF6F5B",borderColor:"#FF6F5B"}} className="roomBtn">Visit your home calculator</Button>
                 </Link>
           </Card>   
         </Wrapper> 
