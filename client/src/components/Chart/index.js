@@ -10,11 +10,11 @@ function createData(time, amount) {
 
 const data = [
   createData("May '20", 28),
-  createData("June '20", 45),
-  createData("July '20", 50),
+  createData("June '20", 60),
+  createData("July '20", 45),
   createData("Aug '20", 80),
-  createData("Sep '20", 74),
-  createData("Oct '20", undefined),
+  createData("Sep '20", 72),
+  createData("Oct '20", 83),
 ];
 
 export default function Chart() {
