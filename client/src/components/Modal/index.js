@@ -67,8 +67,8 @@ const RoomModal = (props) => {
     })
   }
 
-
   return (
+    
     <div>
       <Button style={{backgroundColor:"#ff6f5b", borderColor:"#ff6f5b"}} onClick={toggle}>{props.value.roomName}</Button>
       <Modal isOpen={modal} toggle={toggle} >

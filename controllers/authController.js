@@ -36,7 +36,7 @@ const createToken = (id) => {
 module.exports = {
     // GET on /signup
     signupGet: function(req, res)  {
-        res.render('signup');
+        console.log('whenever user uses GET on signup', res);
     },
 
     //POST on /signup
@@ -90,6 +90,7 @@ module.exports = {
        }
     },
 
+    // GET on /jwt
     jwtGet: async function (req, res) {
         try {
             let token = req.cookies.jwt;

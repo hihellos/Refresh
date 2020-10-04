@@ -22,9 +22,11 @@ router.route("/signup")
   .get(authController.signupGet)
   .post(authController.signupPost);
 
-router.get("/logout", authController.logoutGet)
+router.get("/logout", authController.logoutGet);
 
-router.get("/jwt", authController.jwtGet)
+router.get("/jwt", authController.jwtGet);
+
 router.get("*", checkUser);
+
 module.exports = router;
 
