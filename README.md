@@ -4,12 +4,12 @@
 <br>
 <br>
 
-<h1 align="center">Home Refresh
+<h1 align="center">Refresh
 <img src="client/public/assets/images/logo100x100.png" align="center"/></h1>
 
 <br>
 
-<p align="center" style="font-style: italic;">Home Refresh is a task tracking app for one of your largest investments - your home.</p>
+<p align="center" style="font-style: italic;">Refresh is a task tracking app for one of your largest investments - your home.</p>
 
 <br>
 
@@ -25,16 +25,20 @@
 
 Your home is an investment, and you want to ensure that investment continues to appreciate over time. This requires routine maintenance and updating your home with occasional projects. 
 
-Home Refresh allows a user to have one place to track all of their home maintenance, from small tasks to large projects, in an easy dashboard.
+Refresh allows a user to have one place to track all of their home maintenance, from small tasks to large projects, in an easy dashboard.
 
 
-<img src="client/public/assets/images/Home Refresh.png" align="center"/>
+<img src="client/public/assets/images/Refresh App screenshot.png" align="center"/>
 
 ## TECHNOLOGIES
 
-- React.js
+- MongoDB, Express.js, React, Node.js
+- JWT Token authentication
+- Material-UI and Reactstrap 
+- Mongoose ORM
 - MongoDB Atlas connected
-- Deployed to Heroku
+- Deployed to Heroku 
+
 
 ## INSTALLATION
 
@@ -54,4 +58,4 @@ If you would like to suggest features or changes, please fork this repo and open
 [Andie Wheeler](https://github.com/hihellos)  
 
 ## LINKS
-[DEPLOYED LINK](home-refresh-app.herokuapp.com/)  
+[DEPLOYED LINK](https://home-refresh-app.herokuapp.com/)  
