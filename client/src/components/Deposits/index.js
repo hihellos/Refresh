@@ -18,7 +18,7 @@ export default function Deposits() {
     <React.Fragment>
       <Title>Home Value Score</Title>
       <Typography component="p" variant="h4">
-        74
+        83
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         {today.toDateString()}

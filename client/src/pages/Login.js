@@ -3,11 +3,9 @@ import { Avatar, Button, Link, Grid, CssBaseline, TextField, Typography, Paper }
 import { Alert } from '@material-ui/lab';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-// import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
-// import RoomModal from '../components/Modal'
 
 export default function Login(props) {
   const { setUserId } = useUserContext();
