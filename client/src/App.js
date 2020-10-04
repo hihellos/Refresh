@@ -6,36 +6,19 @@ import Home from './pages/Home';
 import Value from './pages/Value';
 import Survey from './pages/Survey'
 import { AppContext } from './utils/AppContext';
-import API from './utils/API';
-// import GuardedRoute from './utils/GuardedRoute';
+import GuardedRoute from './utils/GuardedRoute';
 import { UserContext } from './utils/UserContext';
-
+import { CardContext } from './utils/CardContext';
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [userId, setUserId] = useState("");
-
-  useEffect(() => {
-    onLoad();
-  },[])
-
-  function onLoad() {
-    API.getJwt()
-    .then(res => {
-      // console.log(res);
-      if (res.data !== "No Token") {
-        userHasAuthenticated(true);
-        setUserId(res.data.id);
-      } else {
-        userHasAuthenticated(false);
-      }
-    })
-    .catch(err => console.log(err));
-  }
+  const [cards, setCards] = useState([]);
 
   return (
     <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
     <UserContext.Provider value={{ userId, setUserId }}>
+    <CardContext.Provider value={{ cards, setCards }}>
     <Router>
       <Switch>
         <Route exact path={["/","/login"]} component={Login} />
@@ -47,6 +30,7 @@ function App() {
         {/* <GuardedRoute path="/survey" component={Survey} auth={isAuthenticated} /> */}
       </Switch>
     </Router>
+    </CardContext.Provider>
     </UserContext.Provider>
     </AppContext.Provider>
   );

@@ -7,17 +7,32 @@ import "./Home.css";
 import Wrapper from "../components/Wrapper";
 import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
+import { useCardContext } from "../utils/CardContext";
 import RoomModal from '../components/Modal';
 import { Link } from 'react-router-dom';
 
 export default function Home(props) {
-  const { userId } = useUserContext();
+  const { userId, setUserId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
-  const [cards, setCards] = useState([]);
-  
+  const { cards, setCards } = useCardContext();
+
   useEffect(() => {
-    loadCards();
-  }); 
+      onLoad();
+      loadCards();
+  })
+
+  function onLoad() {
+    API.getJwt()
+    .then(res => {
+      if (res.data !== "No Token") {
+        userHasAuthenticated(true);
+        setUserId(res.data.id);
+      } else {
+        userHasAuthenticated(false);
+      }
+    })
+    .catch(err => console.log(err));
+  }
 
   function loadCards() {
     API.getAllRooms(userId)
@@ -28,13 +43,10 @@ export default function Home(props) {
       })
       .catch((err) => console.log(err));
   }
-  
+
   const handleLogOutRequest = (e) => {
-    console.log("User trying to log out");
     API.outUser()
       .then((res) => {
-        // console.log(props);
-        // console.log(res);
         if (res.status === 200) {
           userHasAuthenticated(false);
           props.history.push("/");

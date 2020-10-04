@@ -9,8 +9,6 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  // db.users.findOneAndUpdate({_id: ObjectId("5f7612db740410124c9c6058")}, { $push: {rooms:"5f7614f49a08314b0c4e6ccd"}})
-
   saveUserRooms: function (req, res) {
     db.User.updateOne({ _id: req.params.id }, { $set: { rooms: [] } })
       .then((res) => {
@@ -32,21 +30,6 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
-
-  // create: function (req, res) {
-  //   db.Home.create(req.body)
-  //     .then(({ _id }) =>
-  //       db.User.findOneAndUpdate(
-  //         { _id: req.params.id },
-  //         { $push: { rooms: _id } },
-  //         { new: true }
-  //       )
-  //     )
-  //     .then((dbHome) => {
-  //       res.json(dbHome);
-  //     })
-  //     .catch((err) => res.status(422).json(err));
-  // },
 
   addTask: function (req, res) {
     console.log("req.body ", req.body.text);
