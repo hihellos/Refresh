@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -19,7 +19,35 @@ const rows = [
   createData(4, '14 May, 2020', 'Bedroom', 'Carpets steam cleaned'),
 ];
 
-export default function Orders() {
+export default function Orders(props) {
+  const [row, setRow] = useState([]);
+
+  useEffect(() => {
+    loadTasks(); 
+  },[])
+
+  function loadTasks() {
+    props.value.forEach(res => {
+      // await new Promise((resolve, reject) => setTimeout(resolve, 5000));
+      res.tasks.filter(e => e.isFixed === true).forEach(filter => {
+        setRow(row => [...row,
+          {
+            id: filter._id,
+            isFixed: filter.isFixed,
+            taskName: filter.taskName
+          }]);
+        console.log('filter', filter);
+      })
+
+      // res.tasks.map(res => {
+      //   console.log(res);
+      //   res.filter(e => {
+      //     const taskFinish = e.isFixed === true
+      //     setRow(taskFinish);
+      //   })
+      // })
+    })
+  }
 
   return (
     <React.Fragment>

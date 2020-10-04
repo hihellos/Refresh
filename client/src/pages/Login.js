@@ -6,10 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Facebook from '../../src/components/Facebook/Facebook';
 import API from '../utils/API';
 import { useAppContext } from '../utils/AppContext';
-// import { Redirect } from 'react-router-dom';
 import { useUserContext } from "../utils/UserContext";
 // import RoomModal from '../components/Modal'
-
 
 export default function Login(props) {
   const { setUserId } = useUserContext();
@@ -35,8 +33,6 @@ export default function Login(props) {
   
   const handleLogInRequest = e => {
     e.preventDefault();
-    console.log('user submitted');
-    // if (user.email && user.password) {
       API.getUser({
         email: user.email,
         password: user.password
@@ -59,8 +55,7 @@ export default function Login(props) {
             setError({...error, password: ""});
           }
         }
-        // console.log(res.data);
-        // console.log(`${res.data.user} has logged in`)
+        console.log(`${res.data.user} has logged in`)
       })
       .catch(err => console.log(err));
     // }

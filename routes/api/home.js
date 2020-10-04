@@ -4,9 +4,6 @@ const homeController = require("../../controllers/homeController");
 // match /api/home
 router.route("/")
   .get(homeController.findSeededRooms)
-  // .post(homeController.make);
-  // .put(homeController.update)
-  // .delete(homeController.remove);
 
 // match /api/home/rooms
 router.route("/rooms/:id")

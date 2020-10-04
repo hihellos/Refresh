@@ -1,58 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+import { Container, Grid, Paper, Box } from '@material-ui/core';
 import Chart from '../components/Chart';
 import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
-import NewNav from '../components/Nav';
+import Navbar from '../components/Nav';
 import "./Value.css";
+import Copyright from '../components/Copyright';
+import { useUserContext } from "../utils/UserContext";
+import { useCardContext } from '../utils/CardContext';
+import { useAppContext } from '../utils/AppContext';
+import API from '../utils/API';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Refresh
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+export default function Dashboard(props) {
+  const { userId } = useUserContext();
+  const { userHasAuthenticated } = useAppContext();
+  const { cards } = useCardContext();
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+    },
+  
+    container: {
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
+    },
+    paper: {
+      padding: theme.spacing(2),
+      display: 'flex',
+      overflow: 'auto',
+      flexDirection: 'column',
+    },
+    fixedHeight: {
+      height: 240,
+    },
+  }));
 
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 240,
-  },
-}));
-
-export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const handleLogOutRequest = (e) => {
+    API.outUser()
+      .then((res) => {
+        if (res.status === 200) {
+          userHasAuthenticated(false);
+          props.history.push("/");
+        }
+        console.log(`Status:${res.status} Successfully Logged Out`);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <> 
-    <NewNav/>
+    <Navbar logout={handleLogOutRequest}/>
     <div className="wrapper" style={{backgroundColor:'#fafafa'}}>
     <div className={classes.root}>
       <main className={classes.content}>
@@ -74,7 +77,7 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Orders value={cards}/>
               </Paper>
             </Grid>
           </Grid>

@@ -7,44 +7,6 @@ import { useAppContext } from '../utils/AppContext';
 import { useUserContext } from "../utils/UserContext";
 import { Alert } from '@material-ui/lab';
 
-// import { PromiseProvider } from 'mongoose';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
-    backgroundImage: 'url(./assets/images/LoginSignup.jpg)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-    width: theme.spacing(9),
-    height: theme.spacing(9),
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  signUp: {
-    margin: theme.spacing(1, 0, 1),
-  }
-}));
-
 export default function SignUp(props) {
   const { setUserId } = useUserContext();
   const { userHasAuthenticated } = useAppContext();
@@ -115,27 +77,43 @@ export default function SignUp(props) {
         console.log(err)
       })
     }
-    // if (user.email && user.password && user.firstName && user.lastName) {
-    //   const userFullname = `${user.firstName} ${user.lastName}`;
-    //   API.saveUser({
-    //     name: userFullname,
-    //     email: user.email,
-    //     password: user.password
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //     if (res.statusText === "Created") {
-    //       userHasAuthenticated(true);
-    //       setUserId(res.data.user);
-    //       props.history.push("/survey");
-    //     } else {
-    //       userHasAuthenticated(false);
-    //       props.history.push("/");
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
-    // }
   }
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: 'url(./assets/images/LoginSignup.jpg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    paper: {
+      margin: theme.spacing(8, 4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+      width: theme.spacing(9),
+      height: theme.spacing(9),
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+    signUp: {
+      margin: theme.spacing(1, 0, 1),
+    }
+  }));
 
   const classes = useStyles();
   const routeChange = (e) => {

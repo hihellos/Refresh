@@ -23,7 +23,6 @@ function Survey(props) {
     }
 
     const handleLogOutRequest = (e) => {
-        console.log("User trying to log out");
         API.outUser()
           .then((res) => {
             console.log(props);
@@ -64,9 +63,6 @@ function Survey(props) {
         } catch (err) {
             console.log('error', err)
         }
-        // .then(res => console.log('handleSubmitRequest API return', res))
-        // .then(routeChange())
-        // .catch(err => console.log(err));
     }
 
     const routeChange = (e) => {
@@ -75,7 +71,7 @@ function Survey(props) {
 
     return(
         <center>
-        <Navbar logout={() => handleLogOutRequest()} />
+        <Navbar logout={handleLogOutRequest} />
         <Card>
             <CardHeader className="surveyTitle">Select the rooms in your home floor plan:</CardHeader>
             <CardBody>

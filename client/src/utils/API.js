@@ -46,13 +46,6 @@ export default {
         return axios.get("/api/user/" + userId)
     },
 
-    checkUser: function(id) {
-        return axios.get("api/user/" + id)
-        .then(res => {
-            console.log(res);
-        })
-    },
-
     addTask: function(id, data) {
         return axios.put("/api/home/tasks/" + id, data)
         .then(res => {
