@@ -8,7 +8,7 @@ const { checkUser, requireAuth } = require("../middleware/authMiddleware");
 router.use("/api", apiRoutes);
 
 // Main Routes
-// router.get("/home", requireAuth, (req, res) => res.redirect('/login'));
+router.get("/home", requireAuth, (req, res) => console.log("/home", res));
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
